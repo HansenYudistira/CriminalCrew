@@ -1,0 +1,794 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A70834E92CA6BE990066AEA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70834DF2CA6BE990066AEA4 /* Assets.xcassets */; };
+		A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834DE2CA6BE990066AEA4 /* AppDelegate.swift */; };
+		A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E52CA6BE990066AEA4 /* SceneDelegate.swift */; };
+		A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */; };
+		A70834F02CA6BE990066AEA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E72CA6BE990066AEA4 /* ViewController.swift */; };
+		A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */; };
+		A70835002CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */; };
+		A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */; };
+		A70835102CA6C1DB0066AEA4 /* SwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */; };
+		A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */; };
+		A70835152CA6C96B0066AEA4 /* CriminalCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */; };
+		A70835192CA6C96D0066AEA4 /* CriminalCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */; };
+		A708351A2CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A70834BF2CA6BE700066AEA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70834A02CA6BE6F0066AEA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70834A72CA6BE6F0066AEA4;
+			remoteInfo = CriminalCrew;
+		};
+		A70834C92CA6BE700066AEA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70834A02CA6BE6F0066AEA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70834A72CA6BE6F0066AEA4;
+			remoteInfo = CriminalCrew;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A70834A82CA6BE6F0066AEA4 /* CriminalCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CriminalCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70834BE2CA6BE700066AEA4 /* CriminalCrewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CriminalCrewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70834C82CA6BE700066AEA4 /* CriminalCrewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CriminalCrewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70834DE2CA6BE990066AEA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A70834DF2CA6BE990066AEA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A70834E02CA6BE990066AEA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70834E52CA6BE990066AEA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		A70834E72CA6BE990066AEA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewController.swift; sourceTree = "<group>"; };
+		A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameCoordinator.swift; sourceTree = "<group>"; };
+		A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameUseCase.swift; sourceTree = "<group>"; };
+		A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewModel.swift; sourceTree = "<group>"; };
+		A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerTaskRepository.swift; sourceTree = "<group>"; };
+		A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewTests.swift; sourceTree = "<group>"; };
+		A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITests.swift; sourceTree = "<group>"; };
+		A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A70834A52CA6BE6F0066AEA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834BB2CA6BE700066AEA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834C52CA6BE700066AEA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A708349F2CA6BE6F0066AEA4 = {
+			isa = PBXGroup;
+			children = (
+				A70834E82CA6BE990066AEA4 /* CriminalCrew */,
+				A70835142CA6C96B0066AEA4 /* CriminalCrewTests */,
+				A70835182CA6C96D0066AEA4 /* CriminalCrewUITests */,
+				A70834A92CA6BE6F0066AEA4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A70834A92CA6BE6F0066AEA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A70834A82CA6BE6F0066AEA4 /* CriminalCrew.app */,
+				A70834BE2CA6BE700066AEA4 /* CriminalCrewTests.xctest */,
+				A70834C82CA6BE700066AEA4 /* CriminalCrewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A70834E82CA6BE990066AEA4 /* CriminalCrew */ = {
+			isa = PBXGroup;
+			children = (
+				A70834DE2CA6BE990066AEA4 /* AppDelegate.swift */,
+				A70834E52CA6BE990066AEA4 /* SceneDelegate.swift */,
+				A70834E02CA6BE990066AEA4 /* Info.plist */,
+				A708351B2CA6CC3C0066AEA4 /* Infrastructure */,
+				A70834F32CA6BFD40066AEA4 /* Modules */,
+				A70834F12CA6BEA00066AEA4 /* Helpers */,
+				A70834F22CA6BEE00066AEA4 /* Resources */,
+				A70834E72CA6BE990066AEA4 /* ViewController.swift */,
+			);
+			path = CriminalCrew;
+			sourceTree = "<group>";
+		};
+		A70834F12CA6BEA00066AEA4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A70834F22CA6BEE00066AEA4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A70834DF2CA6BE990066AEA4 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A70834F32CA6BFD40066AEA4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A70834FD2CA6C0B40066AEA4 /* ReusableComponents */,
+				A70834F42CA6BFE20066AEA4 /* SwitchGame */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		A70834F42CA6BFE20066AEA4 /* SwitchGame */ = {
+			isa = PBXGroup;
+			children = (
+				A70834FE2CA6C0CC0066AEA4 /* Coordinator */,
+				A70834FB2CA6C0790066AEA4 /* Domain */,
+				A70834FA2CA6C0740066AEA4 /* Data */,
+				A70834F72CA6C03B0066AEA4 /* Scene */,
+			);
+			path = SwitchGame;
+			sourceTree = "<group>";
+		};
+		A70834F72CA6C03B0066AEA4 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				A70834F92CA6C0570066AEA4 /* ViewModel */,
+				A70834F82CA6C0490066AEA4 /* View */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		A70834F82CA6C0490066AEA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A70834F92CA6C0570066AEA4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A70834FA2CA6C0740066AEA4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A70835042CA6C1150066AEA4 /* Repository */,
+				A70835032CA6C1100066AEA4 /* Networking */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A70834FB2CA6C0790066AEA4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A70835022CA6C0F80066AEA4 /* UseCase */,
+				A70835012CA6C0F20066AEA4 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A70834FD2CA6C0B40066AEA4 /* ReusableComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReusableComponents;
+			sourceTree = "<group>";
+		};
+		A70834FE2CA6C0CC0066AEA4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A70835012CA6C0F20066AEA4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A708350E2CA6C1870066AEA4 /* Responses */,
+				A708350D2CA6C1800066AEA4 /* Requests */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		A70835022CA6C0F80066AEA4 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		A70835032CA6C1100066AEA4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A70835062CA6C12C0066AEA4 /* Service */,
+				A70835052CA6C1260066AEA4 /* DTO */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A70835042CA6C1150066AEA4 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A70835052CA6C1260066AEA4 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				A70835092CA6C14B0066AEA4 /* Responses */,
+				A70835082CA6C1460066AEA4 /* Requests */,
+				A70835072CA6C13F0066AEA4 /* Local */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A70835062CA6C12C0066AEA4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A70835072CA6C13F0066AEA4 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		A70835082CA6C1460066AEA4 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		A70835092CA6C14B0066AEA4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		A708350D2CA6C1800066AEA4 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		A708350E2CA6C1870066AEA4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		A70835142CA6C96B0066AEA4 /* CriminalCrewTests */ = {
+			isa = PBXGroup;
+			children = (
+				A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */,
+			);
+			path = CriminalCrewTests;
+			sourceTree = "<group>";
+		};
+		A70835182CA6C96D0066AEA4 /* CriminalCrewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */,
+				A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */,
+			);
+			path = CriminalCrewUITests;
+			sourceTree = "<group>";
+		};
+		A708351B2CA6CC3C0066AEA4 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A70834A72CA6BE6F0066AEA4 /* CriminalCrew */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70834D12CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrew" */;
+			buildPhases = (
+				A70834A42CA6BE6F0066AEA4 /* Sources */,
+				A70834A52CA6BE6F0066AEA4 /* Frameworks */,
+				A70834A62CA6BE6F0066AEA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CriminalCrew;
+			packageProductDependencies = (
+			);
+			productName = CriminalCrew;
+			productReference = A70834A82CA6BE6F0066AEA4 /* CriminalCrew.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A70834BD2CA6BE700066AEA4 /* CriminalCrewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70834D62CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrewTests" */;
+			buildPhases = (
+				A70834BA2CA6BE700066AEA4 /* Sources */,
+				A70834BB2CA6BE700066AEA4 /* Frameworks */,
+				A70834BC2CA6BE700066AEA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70834C02CA6BE700066AEA4 /* PBXTargetDependency */,
+			);
+			name = CriminalCrewTests;
+			packageProductDependencies = (
+			);
+			productName = CriminalCrewTests;
+			productReference = A70834BE2CA6BE700066AEA4 /* CriminalCrewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A70834C72CA6BE700066AEA4 /* CriminalCrewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70834D92CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrewUITests" */;
+			buildPhases = (
+				A70834C42CA6BE700066AEA4 /* Sources */,
+				A70834C52CA6BE700066AEA4 /* Frameworks */,
+				A70834C62CA6BE700066AEA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70834CA2CA6BE700066AEA4 /* PBXTargetDependency */,
+			);
+			name = CriminalCrewUITests;
+			packageProductDependencies = (
+			);
+			productName = CriminalCrewUITests;
+			productReference = A70834C82CA6BE700066AEA4 /* CriminalCrewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A70834A02CA6BE6F0066AEA4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A70834A72CA6BE6F0066AEA4 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A70834BD2CA6BE700066AEA4 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A70834A72CA6BE6F0066AEA4;
+					};
+					A70834C72CA6BE700066AEA4 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A70834A72CA6BE6F0066AEA4;
+					};
+				};
+			};
+			buildConfigurationList = A70834A32CA6BE6F0066AEA4 /* Build configuration list for PBXProject "CriminalCrew" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A708349F2CA6BE6F0066AEA4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A70834A92CA6BE6F0066AEA4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A70834A72CA6BE6F0066AEA4 /* CriminalCrew */,
+				A70834BD2CA6BE700066AEA4 /* CriminalCrewTests */,
+				A70834C72CA6BE700066AEA4 /* CriminalCrewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A70834A62CA6BE6F0066AEA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70834E92CA6BE990066AEA4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834BC2CA6BE700066AEA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834C62CA6BE700066AEA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70834A42CA6BE6F0066AEA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70835002CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift in Sources */,
+				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
+				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
+				A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */,
+				A70835102CA6C1DB0066AEA4 /* SwitchGameViewModel.swift in Sources */,
+				A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */,
+				A70834F02CA6BE990066AEA4 /* ViewController.swift in Sources */,
+				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
+				A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834BA2CA6BE700066AEA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70835152CA6C96B0066AEA4 /* CriminalCrewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70834C42CA6BE700066AEA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70835192CA6C96D0066AEA4 /* CriminalCrewUITests.swift in Sources */,
+				A708351A2CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A70834C02CA6BE700066AEA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70834A72CA6BE6F0066AEA4 /* CriminalCrew */;
+			targetProxy = A70834BF2CA6BE700066AEA4 /* PBXContainerItemProxy */;
+		};
+		A70834CA2CA6BE700066AEA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70834A72CA6BE6F0066AEA4 /* CriminalCrew */;
+			targetProxy = A70834C92CA6BE700066AEA4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A70834D22CA6BE700066AEA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CriminalCrew/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrew;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A70834D32CA6BE700066AEA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CriminalCrew/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrew;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A70834D42CA6BE700066AEA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A70834D52CA6BE700066AEA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A70834D72CA6BE700066AEA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CriminalCrew.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CriminalCrew";
+			};
+			name = Debug;
+		};
+		A70834D82CA6BE700066AEA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CriminalCrew.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CriminalCrew";
+			};
+			name = Release;
+		};
+		A70834DA2CA6BE700066AEA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CriminalCrew;
+			};
+			name = Debug;
+		};
+		A70834DB2CA6BE700066AEA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HQNZ8TWNYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hansen.CriminalCrewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CriminalCrew;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A70834A32CA6BE6F0066AEA4 /* Build configuration list for PBXProject "CriminalCrew" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70834D42CA6BE700066AEA4 /* Debug */,
+				A70834D52CA6BE700066AEA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70834D12CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrew" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70834D22CA6BE700066AEA4 /* Debug */,
+				A70834D32CA6BE700066AEA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70834D62CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70834D72CA6BE700066AEA4 /* Debug */,
+				A70834D82CA6BE700066AEA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70834D92CA6BE700066AEA4 /* Build configuration list for PBXNativeTarget "CriminalCrewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70834DA2CA6BE700066AEA4 /* Debug */,
+				A70834DB2CA6BE700066AEA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A70834A02CA6BE6F0066AEA4 /* Project object */;
+}
