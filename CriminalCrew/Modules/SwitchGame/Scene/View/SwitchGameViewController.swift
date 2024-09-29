@@ -12,13 +12,20 @@ class SwitchGameViewController: UIViewController {
     var viewModel: SwitchGameViewModel!
     var coordinator: SwitchGameCoordinator?
     
-    private var completeTaskButton: UIButton!
+    private var gridStackView: UIStackView!
+    private var gridButtons: [[UIButton]] = []
+    
     private var notifyCoordinatorButton: UIButton!
+    
+    private var pressedButton: [Int] = []
+    let validTags = [1, 5, 9, 13]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        setupGrid()
         
         let repository = MultipeerTaskRepository()
         let useCase = SwitchGameUseCase(taskRepository: repository)
@@ -29,22 +36,74 @@ class SwitchGameViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        completeTaskButton = UIButton(type: .system)
-        completeTaskButton.setTitle("Complete Task", for: .normal)
-        completeTaskButton.addTarget(self, action: #selector(didCompleteTask), for: .touchUpInside)
-        
-        view.addSubview(completeTaskButton)
-        
         notifyCoordinatorButton = UIButton(type: .system)
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
         
         view.addSubview(notifyCoordinatorButton)
         
-        completeTaskButton.translatesAutoresizingMaskIntoConstraints = false
-        notifyCoordinatorButton.translatesAutoresizingMaskIntoConstraints = false
-        completeTaskButton.anchor(top: view.centerYAnchor)
-        notifyCoordinatorButton.anchor(top: completeTaskButton.bottomAnchor, paddingTop: 20)
+    }
+    
+    private func setupGrid() {
+        gridStackView = UIStackView()
+        gridStackView.axis = .vertical
+        gridStackView.spacing = 10
+        gridStackView.distribution = .fillEqually
+        view.addSubview(gridStackView)
+        
+        gridStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            gridStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gridStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gridStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            gridStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+        ])
+
+        for row in 0..<4 {
+            let rowStackView = UIStackView()
+            rowStackView.axis = .horizontal
+            rowStackView.spacing = 10
+            rowStackView.distribution = .fillEqually
+
+            var rowButtons: [UIButton] = []
+            for column in 0..<4 {
+                let button = UIButton(type: .system)
+
+                if let image = UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal) {
+                    button.setImage(image, for: .normal)
+                }
+                
+                button.imageView?.contentMode = .scaleAspectFit
+                
+                button.backgroundColor = .clear
+                
+                button.tag = (row * 4) + column
+
+                button.addTarget(self, action: #selector(toggleButton(_:)), for: .touchUpInside)
+
+                rowButtons.append(button)
+                rowStackView.addArrangedSubview(button)
+            }
+            gridButtons.append(rowButtons)
+            gridStackView.addArrangedSubview(rowStackView)
+        }
+    }
+
+    @objc private func toggleButton(_ sender: UIButton) {
+        if sender.currentImage == UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal) {
+            sender.setImage(UIImage(named: "Blue Lever Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            pressedButton.append(sender.tag)
+            print(pressedButton)
+        } else {
+            sender.setImage(UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            pressedButton.removeAll { $0 == sender.tag }
+            print(pressedButton)
+        }
+        
+        if pressedButton.sorted() == validTags.sorted() {
+            didCompleteTask()
+            showTaskCompletionAlert()
+        }
     }
     
     private func bindViewModel() {
