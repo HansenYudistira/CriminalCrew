@@ -10,7 +10,7 @@ import UIKit
 class SwitchGameViewController: UIViewController {
     
     var viewModel: SwitchGameViewModel!
-    var coordinator: SwitchGameCoordinator?
+    var coordinator: RootCoordinator?
     
     private var gridStackView: UIStackView!
     private var gridButtons: [[UIButton]] = []
@@ -41,7 +41,6 @@ class SwitchGameViewController: UIViewController {
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
         
         view.addSubview(notifyCoordinatorButton)
-        
     }
     
     private func setupGrid() {
@@ -51,10 +50,10 @@ class SwitchGameViewController: UIViewController {
         gridStackView.distribution = .fillEqually
         view.addSubview(gridStackView)
         
+        gridStackView.centerX(inView: view)
+        gridStackView.centerY(inView: view)
         gridStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            gridStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gridStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             gridStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             gridStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
         ])
@@ -69,7 +68,7 @@ class SwitchGameViewController: UIViewController {
             for column in 0..<4 {
                 let button = UIButton(type: .system)
 
-                if let image = UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal) {
+                if let image = UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal) {
                     button.setImage(image, for: .normal)
                 }
                 
@@ -90,12 +89,12 @@ class SwitchGameViewController: UIViewController {
     }
 
     @objc private func toggleButton(_ sender: UIButton) {
-        if sender.currentImage == UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal) {
-            sender.setImage(UIImage(named: "Blue Lever Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        if sender.currentImage == UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal) {
+            sender.setImage(UIImage(named: "Lever Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
             pressedButton.append(sender.tag)
             print(pressedButton)
         } else {
-            sender.setImage(UIImage(named: "Blue Lever On")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            sender.setImage(UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal), for: .normal)
             pressedButton.removeAll { $0 == sender.tag }
             print(pressedButton)
         }

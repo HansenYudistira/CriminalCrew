@@ -10,22 +10,22 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var switchGameCoordinator: SwitchGameCoordinator?
+    var rootCoordinator: RootCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-                
+        
         // Create a UINavigationController
         let navigationController = UINavigationController()
         
         // Instantiate the coordinator
-        switchGameCoordinator = SwitchGameCoordinator(navigationController: navigationController)
+        rootCoordinator = RootCoordinator(navigationController: navigationController)
         
         // Start the coordinator
-        switchGameCoordinator?.start()
+        rootCoordinator?.start()
         
         // Set up the window with the navigation controller as the root view controller
         window = UIWindow(windowScene: windowScene)

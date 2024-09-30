@@ -13,13 +13,14 @@
 		A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */; };
 		A70834F02CA6BE990066AEA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E72CA6BE990066AEA4 /* ViewController.swift */; };
 		A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */; };
-		A70835002CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */; };
+		A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */; };
 		A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */; };
 		A70835102CA6C1DB0066AEA4 /* SwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */; };
 		A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */; };
 		A70835152CA6C96B0066AEA4 /* CriminalCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */; };
 		A70835192CA6C96D0066AEA4 /* CriminalCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */; };
 		A708351A2CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */; };
+		A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708351D2CAA83940066AEA4 /* EmptyResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,13 +51,14 @@
 		A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		A70834E72CA6BE990066AEA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewController.swift; sourceTree = "<group>"; };
-		A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameCoordinator.swift; sourceTree = "<group>"; };
+		A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameUseCase.swift; sourceTree = "<group>"; };
 		A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewModel.swift; sourceTree = "<group>"; };
 		A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerTaskRepository.swift; sourceTree = "<group>"; };
 		A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewTests.swift; sourceTree = "<group>"; };
 		A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITests.swift; sourceTree = "<group>"; };
 		A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A708351D2CAA83940066AEA4 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +140,9 @@
 		A70834F32CA6BFD40066AEA4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A70834FD2CA6C0B40066AEA4 /* ReusableComponents */,
-				A70834F42CA6BFE20066AEA4 /* SwitchGame */,
+				A70834FE2CA6C0CC0066AEA4 /* Coordinator */,
+				A70835202CAA961C0066AEA4 /* Server */,
+				A708351F2CAA96180066AEA4 /* Client */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -147,7 +150,6 @@
 		A70834F42CA6BFE20066AEA4 /* SwitchGame */ = {
 			isa = PBXGroup;
 			children = (
-				A70834FE2CA6C0CC0066AEA4 /* Coordinator */,
 				A70834FB2CA6C0790066AEA4 /* Domain */,
 				A70834FA2CA6C0740066AEA4 /* Data */,
 				A70834F72CA6C03B0066AEA4 /* Scene */,
@@ -208,7 +210,7 @@
 		A70834FE2CA6C0CC0066AEA4 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				A70834FF2CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift */,
+				A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -319,8 +321,41 @@
 		A708351B2CA6CC3C0066AEA4 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A708351C2CAA83850066AEA4 /* Networking */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		A708351C2CAA83850066AEA4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A708351D2CAA83940066AEA4 /* EmptyResponse.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A708351F2CAA96180066AEA4 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				A70835212CAA9E9F0066AEA4 /* MainMenu */,
+				A70834FD2CA6C0B40066AEA4 /* ReusableComponents */,
+				A70834F42CA6BFE20066AEA4 /* SwitchGame */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		A70835202CAA961C0066AEA4 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		A70835212CAA9E9F0066AEA4 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,7 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A70835002CA6C0DE0066AEA4 /* SwitchGameCoordinator.swift in Sources */,
+				A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */,
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
 				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
 				A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */,
@@ -467,6 +502,7 @@
 				A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */,
 				A70834F02CA6BE990066AEA4 /* ViewController.swift in Sources */,
 				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
+				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
 				A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
