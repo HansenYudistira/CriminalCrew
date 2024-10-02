@@ -89,19 +89,12 @@ class SwitchGameViewController: UIViewController {
     }
 
     @objc private func toggleButton(_ sender: UIButton) {
+        viewModel.toggleButton(tag: sender.tag)
+        
         if sender.currentImage == UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal) {
             sender.setImage(UIImage(named: "Lever Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
-            pressedButton.append(sender.tag)
-            print(pressedButton)
         } else {
             sender.setImage(UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal), for: .normal)
-            pressedButton.removeAll { $0 == sender.tag }
-            print(pressedButton)
-        }
-        
-        if pressedButton.sorted() == validTags.sorted() {
-            didCompleteTask()
-            showTaskCompletionAlert()
         }
     }
     

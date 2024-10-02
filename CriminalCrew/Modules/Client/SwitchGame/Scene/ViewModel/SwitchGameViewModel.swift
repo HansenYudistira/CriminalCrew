@@ -11,6 +11,7 @@ class SwitchGameViewModel {
     
     // Dependencies
     private let switchGameUseCase: SwitchGameUseCase
+    var pressedButton: [Int] = []
     
     // Callback
     var taskCompletionStatusChanged: ((Bool) -> Void)?
@@ -18,6 +19,19 @@ class SwitchGameViewModel {
     // Init
     init(switchGameUseCase: SwitchGameUseCase) {
         self.switchGameUseCase = switchGameUseCase
+    }
+    
+    func toggleButton(tag: Int) {
+        if pressedButton.contains(tag) {
+            pressedButton.removeAll { $0 == tag }
+        } else {
+            pressedButton.append(tag)
+        }
+        
+        let isValid = switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
+        if isValid {
+            completeTask()
+        }
     }
     
     func completeTask() {
