@@ -7,14 +7,13 @@
 import Foundation
 
 protocol TaskRepository {
-    func sendTaskDataToPeer(taskData: String, completion: @escaping (Bool) -> Void)
+    func sendTaskDataToPeer(taskDone: TaskDone, completion: @escaping (Bool) -> Void)
     // func fetch()
     // func save()
     // func update()
 }
 
 class MultipeerTaskRepository: TaskRepository {
-    
     // menggunakan GPGameEventListener
     // randomized data
     // terima data dari server, dengan purpose hearddata
@@ -23,8 +22,10 @@ class MultipeerTaskRepository: TaskRepository {
     
     // func representedAsData untuk mengubah entity menjadi data yang bisa dikirim lewat multipeer
     // func broadcast dalam GPGameEventBroadcaster
-    func sendTaskDataToPeer(taskData: String, completion: @escaping (Bool) -> Void) {
-        print("data sent: \(taskData)")
+    func sendTaskDataToPeer(taskDone: TaskDone, completion: @escaping (Bool) -> Void) {
+        print("data sent: \(taskDone)")
+        let data = taskDone.representedAsData()
+        NetworkManager.shared.sendDataToServer(data: data)
         completion(true)
     }
 }

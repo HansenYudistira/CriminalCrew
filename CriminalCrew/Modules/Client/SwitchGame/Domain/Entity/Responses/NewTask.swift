@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewTask: Equatable {
+struct NewTask {
     let purpose: String
     let time: Date
     var payload: [ String : Any ]
@@ -18,12 +18,11 @@ struct NewTask: Equatable {
         self.payload = payload
     }
     
-    static func == (lhs: NewTask, rhs: NewTask) -> Bool {
-        guard let lhsTask = lhs.payload["TaskToBeDone"] as? [Int],
-              let rhsTask = rhs.payload["TaskToBeDone"] as? [Int] else {
+    static func == (lhs: NewTask, rhs: [Int]) -> Bool {
+        guard let lhsTask = lhs.payload["TaskToBeDone"] as? [Int] else {
             return false
         }
         
-        return lhsTask.sorted() == rhsTask.sorted()
+        return lhsTask.sorted() == rhs.sorted()
     }
 }
