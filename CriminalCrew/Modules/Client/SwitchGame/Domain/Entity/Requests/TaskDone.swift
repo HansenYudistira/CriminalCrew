@@ -9,12 +9,11 @@ import Foundation
 import GamePantry
 
 struct TaskDone {
-    let purpose: String
+    let purpose: String = "SendTaskReport"
     let time: Date
     var payload: [String : Any]
     
-    init(purpose: String, time: Date, payload: [String : Any]) {
-        self.purpose = purpose
+    init(time: Date, payload: [String : Any]) {
         self.time = time
         self.payload = payload
     }
@@ -22,12 +21,15 @@ struct TaskDone {
 
 extension TaskDone: GPRepresentableAsData {
     func representedAsData() -> Data {
-        let payloadkeys = PayloadKeys.allCases.reduce(into: [String: String]()) { (result, key) in
-            result[key.rawValue] = self.payload[key.rawValue] as? String ?? ""
-        }
         return dataFrom {
-            payloadkeys
-        } ?? Data()
+            [
+                PayloadKeys.time.rawValue: "\(time)",
+                PayloadKeys.purpose.rawValue: "\(purpose)",
+                PayloadKeys.taskId.rawValue: "\(payload["taskId"] ?? "")",
+                PayloadKeys.isCompleted.rawValue: "\(payload["isCompleted"] ?? "")",
+                PayloadKeys.timestamp.rawValue: "\(payload["timestamp"] ?? "")"
+            ]
+        }!
     }
 }
 

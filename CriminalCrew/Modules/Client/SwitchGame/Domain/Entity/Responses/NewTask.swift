@@ -18,11 +18,19 @@ struct NewTask {
         self.payload = payload
     }
     
-    static func == (lhs: NewTask, rhs: [Int]) -> Bool {
-        guard let lhsTask = lhs.payload["TaskToBeDone"] as? [Int] else {
+    static func == (lhs: NewTask, rhs: [String]) -> Bool {
+        guard let lhsTask = lhs.payload["TaskToBeDone"] as? [String] else {
             return false
         }
         
-        return lhsTask.sorted() == rhs.sorted()
+        return lhsTask == rhs
+    }
+    
+    static func == (lhs: NewTask, rhs: [[String]]) -> Bool {
+        guard let lhsTask = lhs.payload["TaskToBeDone"] as? [[String]] else {
+            return false
+        }
+        
+        return lhsTask == rhs
     }
 }

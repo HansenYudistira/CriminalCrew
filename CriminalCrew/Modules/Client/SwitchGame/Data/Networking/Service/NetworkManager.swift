@@ -11,6 +11,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     func sendDataToServer(data: Data) {
-        print("data sended to server: \(data)")
+        let stringData = data.toString()
+        print("data sended to server: \(stringData ?? "empty")")
     }
 }

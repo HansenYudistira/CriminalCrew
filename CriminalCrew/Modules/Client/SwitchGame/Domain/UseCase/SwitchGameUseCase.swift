@@ -16,36 +16,35 @@ class SwitchGameUseCase {
     
     init(taskRepository: TaskRepository) {
         self.taskRepository = taskRepository
-        newTask = NewTask(purpose: "SwitchTask", time: Date.now, payload: ["taskId": "1", "TaskToBeDone": [1,5,9,13]])
-        taskDone = TaskDone(purpose: "SendTaskReport", time: Date.now, payload: [:])
+        newTask = NewTask(purpose: "SwitchTask", time: Date.now, payload: ["taskId": "1", "TaskToBeDone": ["Quantum Encryption", "Pseudo AIIDS"]])
+        taskDone = TaskDone(time: Date.now, payload: [:])
     }
     
     func completeTask(completion: @escaping (Bool) -> Void) {
-        taskDone.payload["taskId"] = newTask.payload["taskId"]
-        taskDone.payload["isCompleted"] = true
-        taskDone.payload["timestamp"] = Date.now
-        taskRepository.sendTaskDataToPeer(taskDone: taskDone) { isSuccess in
+        let updatedTaskDone = updatedPayloadTaskDone(
+            oldtime: newTask.time,
+            newPayload: [
+                "taskId": newTask.payload["taskId"] ?? "",
+                "isCompleted": true,
+                "timestamp": Date.now,
+                "purpose": taskDone.purpose,
+                "time": newTask.time
+            ]
+        )
+        taskRepository.sendTaskDataToPeer(taskDone: updatedTaskDone) { isSuccess in
             completion(isSuccess)
         }
     }
     
-    func validateGameLogic(pressedButtons: [Int]) -> Bool {
+    func updatedPayloadTaskDone(oldtime: Date, newPayload: [String: Any]) -> TaskDone {
+        return TaskDone(time: oldtime, payload: newPayload)
+    }
+    
+    func validateGameLogic(pressedButtons: [String]) -> Bool {
         return newTask == pressedButtons
     }
+    
+    func validateGameLogic(validtags: [[String]]) -> Bool {
+        return newTask == validtags
+    }
 }
-
-/// struct entityReq {
-/// purpose : string
-/// time : Date
-/// payload : [String : Any] => taskId, isCompleted, timestamp
-/// }
-///
-/// struct entityRes {
-/// purpose: string
-/// time: Date
-/// payload" [String : Any] => taskId, whatTaskToBeDone [Int]
-/// }
-///
-/// struct entitiyGame {
-///  untuk validasi game logic
-/// }
