@@ -23,7 +23,7 @@ struct NewTask {
             return false
         }
         
-        return lhsTask == rhs
+        return Set(lhsTask) == Set(rhs)
     }
     
     static func == (lhs: NewTask, rhs: [[String]]) -> Bool {

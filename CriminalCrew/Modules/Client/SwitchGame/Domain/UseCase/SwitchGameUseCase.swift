@@ -8,8 +8,13 @@
 import Foundation
 import Combine
 
-class SwitchGameUseCase {
+protocol ValidateGameUseCaseProtocol {
+    func validateGameLogic(pressedButtons: [String]) -> Bool
+    func validateGameLogic(pressedButtons: [[String]]) -> Bool
     
+}
+
+class SwitchGameUseCase {
     private let taskRepository: TaskRepository
     var newTask: NewTask
     var taskDone: TaskDone
@@ -39,12 +44,14 @@ class SwitchGameUseCase {
     func updatedPayloadTaskDone(oldtime: Date, newPayload: [String: Any]) -> TaskDone {
         return TaskDone(time: oldtime, payload: newPayload)
     }
-    
+}
+
+extension SwitchGameUseCase: ValidateGameUseCaseProtocol {
     func validateGameLogic(pressedButtons: [String]) -> Bool {
         return newTask == pressedButtons
     }
     
-    func validateGameLogic(validtags: [[String]]) -> Bool {
-        return newTask == validtags
+    func validateGameLogic(pressedButtons: [[String]]) -> Bool {
+        return newTask == pressedButtons
     }
 }

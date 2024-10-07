@@ -9,7 +9,7 @@ import Foundation
 import GamePantry
 
 struct TaskDone {
-    let purpose: String = "SendTaskReport"
+    let purpose: String = "SentTaskReport"
     let time: Date
     var payload: [String : Any]
     

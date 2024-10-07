@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Vinncz/GamePantry",
       "state" : {
-        "revision" : "14f0f4c6d1ec1fb7239a1c8c1eea377cb504616a",
-        "version" : "0.1.2"
+        "revision" : "639d6e1f8b0393bc978023144ddbbeb83510139c",
+        "version" : "0.1.5"
       }
     }
   ],

@@ -28,6 +28,8 @@ class SwitchGameViewModel {
         let isValid = switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
         if isValid {
             completeTask()
+        } else {
+            wrongAnswer()
         }
     }
     
@@ -35,5 +37,9 @@ class SwitchGameViewModel {
         switchGameUseCase.completeTask { [weak self] isSuccess in
             self?.taskCompletionStatusChanged?(isSuccess)
         }
+    }
+    
+    func wrongAnswer() {
+        self.taskCompletionStatusChanged?(false)
     }
 }

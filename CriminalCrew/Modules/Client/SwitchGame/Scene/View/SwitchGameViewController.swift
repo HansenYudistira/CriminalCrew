@@ -12,17 +12,18 @@ class SwitchGameViewController: UIViewController {
     var viewModel: SwitchGameViewModel!
     var coordinator: RootCoordinator?
     
+    private var hStackView: UIStackView!
+    private var vStackView: UIStackView!
     private var gridStackView: UIStackView!
+    private var promptView: UIStackView!
+    private var secondArrayStackView: UIStackView!
     private var gridButtons: [[UIButton]] = []
     
     private var notifyCoordinatorButton: UIButton!
-    
-    private var pressedButton: [Int] = []
-    let validTags = [1, 5, 9, 13]
+    var colorArray = ["Red", "Blue", "Yellow", "Green"]
     var firstArray = ["Quantum", "Pseudo"]
     var secondArray = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +37,6 @@ class SwitchGameViewController: UIViewController {
         bindViewModel()
         
         setupUI()
-        setupGrid()
     }
     
     override var shouldAutorotate: Bool {
@@ -45,23 +45,70 @@ class SwitchGameViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        
+        hStackView = UIStackView()
+        hStackView.axis = .horizontal
+        hStackView.spacing = 10
+        hStackView.distribution = .fill
+        view.addSubview(hStackView)
+        
         notifyCoordinatorButton = UIButton(type: .system)
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
+        hStackView.addArrangedSubview(notifyCoordinatorButton)
         
-        view.addSubview(notifyCoordinatorButton)
+        vStackView = UIStackView()
+        vStackView.axis = .vertical
+        vStackView.spacing = 10
+        vStackView.distribution = .fill
+        hStackView.addArrangedSubview(vStackView)
+        
+        hStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        
+        NSLayoutConstraint.activate([
+            notifyCoordinatorButton.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.4),
+            vStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.6)
+        ])
+        
+        promptView = UIStackView()
+        promptView.axis = .horizontal
+        promptView.spacing = 10
+        promptView.distribution = .fillProportionally
+        let promptText = UILabel()
+        promptText.text = "Select the correct answer"
+        let timeText = UILabel()
+        timeText.text = "waktu tersisa :"
+        promptView.addArrangedSubview(promptText)
+        promptView.addArrangedSubview(timeText)
+        vStackView.addArrangedSubview(promptView)
+        
+        setupGrid()
+        vStackView.addArrangedSubview(gridStackView)
+        
+        vStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            promptView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.2),
+            secondArrayStackView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.2),
+            gridStackView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.6)
+        ])
     }
     
     private func setupGrid() {
         firstArray.shuffle()
         secondArray.shuffle()
         
-        let secondArrayStackView = UIStackView()
+        secondArrayStackView = UIStackView()
         secondArrayStackView.axis = .horizontal
         secondArrayStackView.spacing = 10
         secondArrayStackView.distribution = .fillEqually
-        view.addSubview(secondArrayStackView)
-
+        vStackView.addArrangedSubview(secondArrayStackView)
+        
+        let indicatorView = UIView()
+        let indicatorLabel = UILabel()
+        indicatorLabel.text = "lampu"
+        indicatorView.addSubview(indicatorLabel)
+        
+        secondArrayStackView.addArrangedSubview(indicatorView)
 
         for column in 0..<secondArray.count {
             let label = UILabel()
@@ -74,51 +121,40 @@ class SwitchGameViewController: UIViewController {
         gridStackView.axis = .vertical
         gridStackView.spacing = 10
         gridStackView.distribution = .fillEqually
-        view.addSubview(gridStackView)
-        
-        secondArrayStackView.anchor(bottom: gridStackView.topAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingBottom: 8, paddingTrailing: 8)
-        secondArrayStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
-        
-        gridStackView.centerX(inView: view)
-        gridStackView.centerY(inView: view)
-        gridStackView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingBottom: 8, paddingTrailing: 8)
-        gridStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            gridStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-            gridStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
-        ])
+        vStackView.addArrangedSubview(gridStackView)
 
         for row in 0..<firstArray.count {
             let rowContainerStackView = UIStackView()
             rowContainerStackView.axis = .horizontal
             rowContainerStackView.spacing = 10
-            rowContainerStackView.distribution = .fillProportionally
+            rowContainerStackView.alignment = .center
 
             let labelBox = UIView()
             let label = UILabel()
             label.text = firstArray[row]
             label.textAlignment = .left
+            label.adjustsFontSizeToFitWidth = true
             label.translatesAutoresizingMaskIntoConstraints = false
-            
+            label.setContentHuggingPriority(.required, for: .horizontal)
             labelBox.addSubview(label)
-            label.centerXAnchor.constraint(equalTo: labelBox.centerXAnchor).isActive = true
-            label.centerYAnchor.constraint(equalTo: labelBox.centerYAnchor).isActive = true
-
-            labelBox.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            labelBox.heightAnchor.constraint(equalToConstant: 50).isActive = true
             
-            rowContainerStackView.addSubview(labelBox)
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: labelBox.leadingAnchor),
+                label.centerYAnchor.constraint(equalTo: labelBox.centerYAnchor)
+            ])
+            
+            rowContainerStackView.addArrangedSubview(labelBox)
 
             let rowStackView = UIStackView()
             rowStackView.axis = .horizontal
-            rowStackView.spacing = 10
+            rowStackView.spacing = 8
             rowStackView.distribution = .fillEqually
 
             var rowButtons: [UIButton] = []
             for column in 0..<secondArray.count {
                 let button = UIButton(type: .system)
 
-                if let image = UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal) {
+                if let image = UIImage(named: "Switch Off")?.withRenderingMode(.alwaysOriginal) {
                     button.setImage(image, for: .normal)
                 }
                 
@@ -134,6 +170,13 @@ class SwitchGameViewController: UIViewController {
             }
             
             rowContainerStackView.addArrangedSubview(rowStackView)
+            labelBox.translatesAutoresizingMaskIntoConstraints = false
+            rowStackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                labelBox.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
+                rowStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
+            ])
             gridStackView.addArrangedSubview(rowContainerStackView)
         }
     }
@@ -142,10 +185,10 @@ class SwitchGameViewController: UIViewController {
         viewModel.toggleButton(label: sender.accessibilityLabel ?? "")
         
         if sender.tag == 0 {
-            sender.setImage(UIImage(named: "Lever Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            sender.setImage(UIImage(named: "Switch On")?.withRenderingMode(.alwaysOriginal), for: .normal)
             sender.tag = 1
         } else {
-            sender.setImage(UIImage(named: "Lever On")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            sender.setImage(UIImage(named: "Switch Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
             sender.tag = 0
         }
     }
@@ -169,15 +212,13 @@ class SwitchGameViewController: UIViewController {
     }
 
     private func showTaskCompletionAlert() {
-        let alert = UIAlertController(title: "Task Completed", message: "Task has been completed and sent to another device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+        let text = "Task completed successfully."
+        notifyCoordinatorButton.setTitle(text, for: .normal)
     }
     
     private func showErrorAlert() {
-        let alert = UIAlertController(title: "Error", message: "Failed to complete the task.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+        let text = "Wrong Button Bruh."
+        notifyCoordinatorButton.setTitle(text, for: .normal)
     }
 }
 
