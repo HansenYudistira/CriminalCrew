@@ -28,6 +28,8 @@
 		A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09802CAE236000456F30 /* BaseResponse.swift */; };
 		A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09822CAE236F00456F30 /* ResponseError.swift */; };
 		A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09842CAE238C00456F30 /* Error+ext.swift */; };
+		A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* NewPrompt.swift */; };
+		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		A74A09802CAE236000456F30 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		A74A09822CAE236F00456F30 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		A74A09842CAE238C00456F30 /* Error+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+ext.swift"; sourceTree = "<group>"; };
+		A76130672CB50A4D00EB0FDA /* NewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrompt.swift; sourceTree = "<group>"; };
+		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				A70835292CAD22F10066AEA4 /* NetworkManager.swift */,
+				A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				A70835272CAD1E3B0066AEA4 /* NewTask.swift */,
+				A76130672CB50A4D00EB0FDA /* NewPrompt.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 			files = (
 				A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */,
 				A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */,
+				A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */,
 				A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */,
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
 				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
@@ -533,6 +540,7 @@
 				A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */,
 				A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */,
 				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
+				A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */,
 				A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

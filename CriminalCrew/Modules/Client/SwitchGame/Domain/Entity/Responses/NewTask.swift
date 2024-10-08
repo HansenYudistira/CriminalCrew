@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import GamePantry
 
-struct NewTask {
-    let purpose: String
-    let time: Date
+struct NewTask: GPEvent {
+    var id: String = "NewTask"
+
+    let purpose: String = "Get a New Task"
+    
+    var instanciatedOn: Date = .now
+    
     var payload: [ String : Any ]
     
-    init(purpose: String, time: Date, payload: [String : Any]) {
-        self.purpose = purpose
-        self.time = time
+    init(payload: [String : Any]) {
         self.payload = payload
     }
     
@@ -32,5 +35,12 @@ struct NewTask {
         }
         
         return lhsTask == rhs
+    }
+}
+
+extension NewTask: GPReceivableEvent {
+    static func construct(from payload: [String : Any]) -> NewTask? {
+        guard let _ = payload["TaskToBeDone"] as? [String] else { return nil }
+        return .init(payload: payload)
     }
 }

@@ -20,7 +20,7 @@ class SwitchGameUseCase {
     
     init(taskRepository: TaskRepository) {
         self.taskRepository = taskRepository
-        newTask = NewTask(purpose: "SwitchTask", time: Date.now, payload: ["taskId": "1", "TaskToBeDone": ["Quantum Encryption", "Pseudo AIIDS"]])
+        newTask = NewTask(payload: ["taskId": "1", "TaskToBeDone": ["Quantum Encryption", "Pseudo AIIDS"]])
         taskDone = TaskDone(payload: [:])
     }
     
@@ -29,9 +29,8 @@ class SwitchGameUseCase {
             newPayload: [
                 "taskId": newTask.payload["taskId"] ?? "",
                 "isCompleted": true,
-                "timestamp": Date.now,
-                "purpose": taskDone.purpose,
-                "time": newTask.time
+                "id": taskDone.id,
+                "instanciatedOn": newTask.instanciatedOn
             ]
         )
         taskRepository.sendTaskDataToPeer(taskDone: updatedTaskDone) { isSuccess in

@@ -75,7 +75,7 @@ class SwitchGameViewController: UIViewController {
         promptView.spacing = 10
         promptView.distribution = .fillProportionally
         let promptText = UILabel()
-        promptText.text = "Select the correct answer"
+        promptText.text = "Select the correct answer :"
         let timeText = UILabel()
         timeText.text = "waktu tersisa :"
         promptView.addArrangedSubview(promptText)
@@ -213,12 +213,18 @@ class SwitchGameViewController: UIViewController {
 
     private func showTaskCompletionAlert() {
         let text = "Task completed successfully."
-        notifyCoordinatorButton.setTitle(text, for: .normal)
+        changeTimeLabelText(text: text)
     }
     
     private func showErrorAlert() {
         let text = "Wrong Button Bruh."
-        notifyCoordinatorButton.setTitle(text, for: .normal)
+        changeTimeLabelText(text: text)
+    }
+    
+    private func changeTimeLabelText(text: String) {
+        if let timeLabel = promptView.arrangedSubviews[1] as? UILabel {
+            timeLabel.text = text
+        }
     }
 }
 

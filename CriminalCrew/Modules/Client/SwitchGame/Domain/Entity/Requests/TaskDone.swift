@@ -40,10 +40,9 @@ extension TaskDone: GPSendableEvent {
         return dataFrom {
             [
                 PayloadKeys.instanciatedOn.rawValue: "\(instanciatedOn)",
-                PayloadKeys.purpose.rawValue: "\(purpose)",
+                PayloadKeys.id.rawValue: "\(id)",
                 PayloadKeys.taskId.rawValue: "\(payload["taskId"] ?? "")",
-                PayloadKeys.isCompleted.rawValue: "\(payload["isCompleted"] ?? "")",
-                PayloadKeys.timestamp.rawValue: "\(payload["timestamp"] ?? "")"
+                PayloadKeys.isCompleted.rawValue: "\(payload["isCompleted"] ?? "")"
             ]
         }!
     }
@@ -51,8 +50,7 @@ extension TaskDone: GPSendableEvent {
     enum PayloadKeys : String, CaseIterable {
         case isCompleted = "isCompleted"
         case taskId = "taskId"
-        case timestamp = "timestamp"
-        case purpose = "purpose"
+        case id = "id"
         case instanciatedOn = "instanciatedOn"
     }
 }
