@@ -30,6 +30,7 @@
 		A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09842CAE238C00456F30 /* Error+ext.swift */; };
 		A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* NewPrompt.swift */; };
 		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
+		A761306C2CB681EE00EB0FDA /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* SwitchButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		A74A09842CAE238C00456F30 /* Error+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+ext.swift"; sourceTree = "<group>"; };
 		A76130672CB50A4D00EB0FDA /* NewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrompt.swift; sourceTree = "<group>"; };
 		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
+		A761306B2CB681EE00EB0FDA /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */,
+				A761306B2CB681EE00EB0FDA /* SwitchButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */,
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
 				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
+				A761306C2CB681EE00EB0FDA /* SwitchButton.swift in Sources */,
 				A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */,
 				A70835282CAD1E3B0066AEA4 /* NewTask.swift in Sources */,
 				A70835262CAD1C780066AEA4 /* TaskDone.swift in Sources */,

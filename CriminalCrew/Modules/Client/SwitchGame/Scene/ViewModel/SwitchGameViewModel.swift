@@ -7,10 +7,8 @@
 
 import Foundation
 import Combine
-import Observation
 
-@Observable
-class SwitchGameViewModel {
+internal class SwitchGameViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let switchGameUseCase: SwitchGameUseCase
     
@@ -28,9 +26,9 @@ class SwitchGameViewModel {
     func bind(_ input: Input) {
         input.didPressedButton
             .receive(on: DispatchQueue.main)
-            .sink {accessibilityLabel in
-                self.toggleButton(label: accessibilityLabel)
-                self.validateTask()
+            .sink { [weak self] accessibilityLabel in
+                self?.toggleButton(label: accessibilityLabel)
+                self?.validateTask()
             }
             .store(in: &cancellables)
     }

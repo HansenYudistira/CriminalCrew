@@ -7,9 +7,7 @@
 
 import UIKit
 import Combine
-import Observation
 
-@Observable
 internal class SwitchGameViewController: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
@@ -17,11 +15,13 @@ internal class SwitchGameViewController: UIViewController {
     var viewModel: SwitchGameViewModel!
     var coordinator: RootCoordinator?
     
+    private var leverStackView: UIStackView!
     private var hStackView: UIStackView!
     private var vStackView: UIStackView!
     private var gridStackView: UIStackView!
     private var promptView: UIStackView!
     private var secondArrayStackView: UIStackView!
+    private var indicatorStackView: UIStackView!
     private var gridButtons: [[UIButton]] = []
     
     private var notifyCoordinatorButton: UIButton!
@@ -62,10 +62,25 @@ internal class SwitchGameViewController: UIViewController {
         hStackView.distribution = .fill
         view.addSubview(hStackView)
         
+        leverStackView = UIStackView()
+        leverStackView.axis = .vertical
+        leverStackView.spacing = 10
+        leverStackView.distribution = .fill
+        hStackView.addArrangedSubview(leverStackView)
+        
+        let spacerView = UIView()
+        spacerView.translatesAutoresizingMaskIntoConstraints = false
+        hStackView.addArrangedSubview(spacerView)
+        
         notifyCoordinatorButton = UIButton(type: .system)
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
-        hStackView.addArrangedSubview(notifyCoordinatorButton)
+        leverStackView.addArrangedSubview(notifyCoordinatorButton)
+        let portraitBackgroundImage = UIImageView()
+        portraitBackgroundImage.image = UIImage(named: "BG Portrait")
+        portraitBackgroundImage.contentMode = .scaleAspectFill
+        portraitBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(portraitBackgroundImage, belowSubview: hStackView)
         
         vStackView = UIStackView()
         vStackView.axis = .vertical
@@ -76,8 +91,13 @@ internal class SwitchGameViewController: UIViewController {
         hStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
         NSLayoutConstraint.activate([
-            notifyCoordinatorButton.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.4),
-            vStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.6)
+            portraitBackgroundImage.topAnchor.constraint(equalTo: leverStackView.topAnchor),
+            portraitBackgroundImage.leadingAnchor.constraint(equalTo: leverStackView.leadingAnchor),
+            portraitBackgroundImage.bottomAnchor.constraint(equalTo: leverStackView.bottomAnchor),
+            portraitBackgroundImage.trailingAnchor.constraint(equalTo: leverStackView.trailingAnchor),
+            leverStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.375),
+            spacerView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.05),
+            vStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.575)
         ])
         
         promptView = UIStackView()
@@ -113,12 +133,22 @@ internal class SwitchGameViewController: UIViewController {
         secondArrayStackView.distribution = .fillEqually
         vStackView.addArrangedSubview(secondArrayStackView)
         
-        let indicatorView = UIView()
-        let indicatorLabel = UILabel()
-        indicatorLabel.text = "lampu"
-        indicatorView.addSubview(indicatorLabel)
+        indicatorStackView = UIStackView()
+        indicatorStackView.axis = .horizontal
+        indicatorStackView.spacing = 10
+        indicatorStackView.distribution = .fillEqually
         
-        secondArrayStackView.addArrangedSubview(indicatorView)
+        let rightIndicatorView = UIImageView()
+        rightIndicatorView.contentMode = .scaleAspectFit
+        rightIndicatorView.image = UIImage(named: "Green Light Off")
+        let falseIndicatorView = UIImageView()
+        falseIndicatorView.contentMode = .scaleAspectFit
+        falseIndicatorView.image = UIImage(named: "Red Light Off")
+        
+        indicatorStackView.addArrangedSubview(rightIndicatorView)
+        indicatorStackView.addArrangedSubview(falseIndicatorView)
+        
+        secondArrayStackView.addArrangedSubview(indicatorStackView)
 
         for column in 0..<secondArray.count {
             let label = UILabel()
@@ -162,16 +192,7 @@ internal class SwitchGameViewController: UIViewController {
 
             var rowButtons: [UIButton] = []
             for column in 0..<secondArray.count {
-                let button = UIButton(type: .system)
-
-                if let image = UIImage(named: "Switch Off")?.withRenderingMode(.alwaysOriginal) {
-                    button.setImage(image, for: .normal)
-                }
-                
-                button.imageView?.contentMode = .scaleAspectFit
-                button.backgroundColor = .clear
-                button.accessibilityLabel = "\(firstArray[row]) \(secondArray[column])"
-                button.tag = 0
+                let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
 
                 button.addTarget(self, action: #selector(toggleButton(_:)), for: .touchUpInside)
 
@@ -198,25 +219,14 @@ internal class SwitchGameViewController: UIViewController {
         viewModel.taskCompletionStatus
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isSuccess in
-                if isSuccess {
-                    self?.showTaskCompletionAlert()
-                } else {
-                    self?.showErrorAlert()
-                }
+                self?.showTaskAlert(isSuccess: isSuccess)
             }
             .store(in: &cancellables)
     }
-
-//    @objc private func toggleButton(_ sender: UIButton) {
-//        
-//        viewModel.toggleButton(label: sender.accessibilityLabel ?? "")
-//        updateButtonAppearance(sender)
-//    }
     
-    @objc private func toggleButton(_ sender: UIButton) {
+    @objc private func toggleButton(_ sender: SwitchButton) {
         didPressedButton.send((sender.accessibilityLabel!))
-        
-        updateButtonAppearance(sender)
+        sender.toggleState()
     }
     
     private func updateButtonAppearance(_ sender: UIButton) {
@@ -228,25 +238,32 @@ internal class SwitchGameViewController: UIViewController {
             sender.tag = 0
         }
     }
-
-    @objc private func didCompleteTask() {
-        viewModel.completeTask()
-    }
     
     @objc private func didCompleteQuickTimeEvent() {
         coordinator?.handleTaskCompletion()
     }
 
-    private func showTaskCompletionAlert() {
-        let text = "Task completed successfully."
-        changeTimeLabelText(text: text)
+    private func showTaskAlert(isSuccess: Bool) {
+        if let indicatorStackView = secondArrayStackView.arrangedSubviews.compactMap({ $0 as? UIStackView }).first {
+            if isSuccess {
+                if let rightIndicatorView = indicatorStackView.arrangedSubviews[0] as? UIImageView {
+                    rightIndicatorView.image = UIImage(named: "Green Light On")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        rightIndicatorView.image = UIImage(named: "Green Light Off")
+                    }
+                }
+            } else {
+                if let falseIndicatorView = indicatorStackView.arrangedSubviews[1] as? UIImageView {
+                    falseIndicatorView.image = UIImage(named: "Red Light On")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        falseIndicatorView.image = UIImage(named: "Red Light Off")
+                    }
+                }
+            }
+        }
     }
-    
-    private func showErrorAlert() {
-        let text = "Wrong Button Bruh."
-        changeTimeLabelText(text: text)
-    }
-    
+                        
     private func changeTimeLabelText(text: String) {
         if let timeLabel = promptView.arrangedSubviews[1] as? UILabel {
             timeLabel.text = text
