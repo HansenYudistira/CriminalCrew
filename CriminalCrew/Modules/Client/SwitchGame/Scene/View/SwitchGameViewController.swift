@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Combine
+import Observation
 
-class SwitchGameViewController: UIViewController {
+@Observable
+internal class SwitchGameViewController: UIViewController {
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var viewModel: SwitchGameViewModel!
     var coordinator: RootCoordinator?
@@ -23,20 +28,25 @@ class SwitchGameViewController: UIViewController {
     var colorArray = ["Red", "Blue", "Yellow", "Green"]
     var firstArray = ["Quantum", "Pseudo"]
     var secondArray = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
+    
+    private let didPressedButton = PassthroughSubject<String, Never>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+        forceLandscapeOrientation()
         
         let repository = MultipeerTaskRepository()
         let useCase = SwitchGameUseCase(taskRepository: repository)
         self.viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
         
-        bindViewModel()
-        
         setupUI()
+        bindViewModel()
+    }
+    
+    private func forceLandscapeOrientation() {
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     override var shouldAutorotate: Bool {
@@ -180,26 +190,42 @@ class SwitchGameViewController: UIViewController {
             gridStackView.addArrangedSubview(rowContainerStackView)
         }
     }
-
-    @objc private func toggleButton(_ sender: UIButton) {
-        viewModel.toggleButton(label: sender.accessibilityLabel ?? "")
+    
+    private func bindViewModel() {
+        let input = SwitchGameViewModel.Input(didPressedButton: didPressedButton)
+        viewModel.bind(input)
         
+        viewModel.taskCompletionStatus
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isSuccess in
+                if isSuccess {
+                    self?.showTaskCompletionAlert()
+                } else {
+                    self?.showErrorAlert()
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+//    @objc private func toggleButton(_ sender: UIButton) {
+//        
+//        viewModel.toggleButton(label: sender.accessibilityLabel ?? "")
+//        updateButtonAppearance(sender)
+//    }
+    
+    @objc private func toggleButton(_ sender: UIButton) {
+        didPressedButton.send((sender.accessibilityLabel!))
+        
+        updateButtonAppearance(sender)
+    }
+    
+    private func updateButtonAppearance(_ sender: UIButton) {
         if sender.tag == 0 {
             sender.setImage(UIImage(named: "Switch On")?.withRenderingMode(.alwaysOriginal), for: .normal)
             sender.tag = 1
         } else {
             sender.setImage(UIImage(named: "Switch Off")?.withRenderingMode(.alwaysOriginal), for: .normal)
             sender.tag = 0
-        }
-    }
-    
-    private func bindViewModel() {
-        viewModel.taskCompletionStatusChanged = { [weak self] isSuccess in
-            if isSuccess {
-                self?.showTaskCompletionAlert()
-            } else {
-                self?.showErrorAlert()
-            }
         }
     }
 

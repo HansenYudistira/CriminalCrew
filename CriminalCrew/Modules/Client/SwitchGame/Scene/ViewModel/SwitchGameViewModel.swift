@@ -6,25 +6,52 @@
 //
 
 import Foundation
+import Combine
+import Observation
 
+@Observable
 class SwitchGameViewModel {
-    
+    private var cancellables = Set<AnyCancellable>()
     private let switchGameUseCase: SwitchGameUseCase
-    var pressedButton: [String] = []
     
-    var taskCompletionStatusChanged: ((Bool) -> Void)?
+    var pressedButton: [String] = []
+    var taskCompletionStatus = PassthroughSubject<Bool, Never>()
     
     init(switchGameUseCase: SwitchGameUseCase) {
         self.switchGameUseCase = switchGameUseCase
     }
     
+    struct Input {
+        let didPressedButton: PassthroughSubject<String, Never>
+    }
+    
+    func bind(_ input: Input) {
+        input.didPressedButton
+            .receive(on: DispatchQueue.main)
+            .sink {accessibilityLabel in
+                self.toggleButton(label: accessibilityLabel)
+                self.validateTask()
+            }
+            .store(in: &cancellables)
+    }
+    
     func toggleButton(label: String) {
         if pressedButton.contains(label) {
-            pressedButton.removeAll { $0 == label }
+            removeButtonLabel(label)
         } else {
-            pressedButton.append(label)
+            addButtonLabel(label)
         }
-        
+    }
+    
+    func addButtonLabel(_ label: String) {
+        pressedButton.append(label)
+    }
+    
+    func removeButtonLabel(_ label: String) {
+        pressedButton.removeAll { $0 == label }
+    }
+    
+    func validateTask() {
         let isValid = switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
         if isValid {
             completeTask()
@@ -34,12 +61,16 @@ class SwitchGameViewModel {
     }
     
     func completeTask() {
-        switchGameUseCase.completeTask { [weak self] isSuccess in
-            self?.taskCompletionStatusChanged?(isSuccess)
+        DispatchQueue.global(qos: .background).async {
+            self.switchGameUseCase.completeTask { [weak self] isSuccess in
+                DispatchQueue.main.async {
+                    self?.taskCompletionStatus.send(isSuccess)
+                }
+            }
         }
     }
     
     func wrongAnswer() {
-        self.taskCompletionStatusChanged?(false)
+        taskCompletionStatus.send(false)
     }
 }
