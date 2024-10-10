@@ -8,190 +8,81 @@
 import UIKit
 import Combine
 
-internal class SwitchGameViewController: UIViewController {
+internal class SwitchGameViewController: BaseGameViewController, GameContentProvider {
     
     private var cancellables = Set<AnyCancellable>()
+    internal var viewModel: SwitchGameViewModel?
+    internal var coordinator: RootCoordinator?
     
-    var viewModel: SwitchGameViewModel?
-    var coordinator: RootCoordinator?
+    private let leverStackView: UIStackView = createVerticalStackView()
+    private let gridStackView: UIStackView = createVerticalStackView()
+    private let switchContainerStackView: UIStackView = createVerticalStackView()
+    private let secondArrayStackView: UIStackView = createHorizontalStackView()
+    private let indicatorStackView: UIStackView = createHorizontalStackView()
+    private let promptStackView: UIStackView = createHorizontalStackView()
     
-    private var leverStackView: UIStackView = UIStackView()
-    private var hStackView: UIStackView = UIStackView()
-    private var vStackView: UIStackView = UIStackView()
-    private var gridStackView: UIStackView = UIStackView()
-    private var secondArrayStackView: UIStackView = UIStackView()
-    private var indicatorStackView: UIStackView = UIStackView()
-    
-    private var timeLabel: UILabel = UILabel()
-    private var promptLabel: UILabel = UILabel()
-    private var promptBackground: UIImageView = UIImageView()
-    private var promptContainerView: UIView = UIView()
-    private var promptStackView: UIStackView = UIStackView()
+    private var timeLabel: UILabel = createLabel(text: "20")
+    private var promptLabel: UILabel = createLabel(text: "Quantum Encryption, Pseudo AIIDS")
     
     private var notifyCoordinatorButton: UIButton = UIButton(type: .system)
-    var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
-    var firstArray : [String] = ["Quantum", "Pseudo"]
-    var secondArray : [String] = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
+    private var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
+    private var firstArray : [String] = ["Quantum", "Pseudo"]
+    private var secondArray : [String] = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
     
     private let didPressedButton = PassthroughSubject<String, Never>()
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
+    
+    internal func createFirstPanelView() -> UIView {
+        setupLeverViewContent()
+        setupPortraitBackgroundImage()
+        return leverStackView
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    internal func createSecondPanelView() -> UIView {
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(switchContainerStackView)
+        
+        switchContainerStackView.addArrangedSubview(secondArrayStackView)
+        switchContainerStackView.addArrangedSubview(gridStackView)
+        switchContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            switchContainerStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            switchContainerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            switchContainerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            switchContainerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8)
+        ])
+        setupSwitchViewContent()
+        setupLandscapeBackgroundImage()
+        
+        let landscapeBackgroundImage = addBackgroundImageView("BG Landscape")
+        
+        containerView.insertSubview(landscapeBackgroundImage, at: 0)
+        
+        NSLayoutConstraint.activate([
+            landscapeBackgroundImage.topAnchor.constraint(equalTo: containerView.topAnchor),
+            landscapeBackgroundImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            landscapeBackgroundImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            landscapeBackgroundImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+        return containerView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        forceLandscapeOrientation()
-        
-        let repository = MultipeerTaskRepository()
-        let useCase = SwitchGameUseCase(taskRepository: repository)
-        self.viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
-        
-        setupUI()
-        bindViewModel()
+    internal func createPromptView() -> UIView {
+        setupPromptView()
+        return promptStackView
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print("promptStackView frame: \(promptStackView.frame)")
-        print("promptContainerView frame: \(promptContainerView.frame)")
-    }
-    
-    private func forceLandscapeOrientation() {
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-    }
-    
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    private func setupUI() {
-        view.backgroundColor = .systemBackground
-        
-        hStackView.axis = .horizontal
-        hStackView.spacing = 10
-        hStackView.distribution = .fill
-        view.addSubview(hStackView)
-        
-        leverStackView.axis = .vertical
-        leverStackView.spacing = 10
-        leverStackView.distribution = .fill
-        hStackView.addArrangedSubview(leverStackView)
-        
-        let spacerView = UIView()
-        spacerView.translatesAutoresizingMaskIntoConstraints = false
-        hStackView.addArrangedSubview(spacerView)
-        
+    private func setupLeverViewContent() {
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
         leverStackView.addArrangedSubview(notifyCoordinatorButton)
-        
-        let portraitBackgroundImage = UIImageView()
-        portraitBackgroundImage.image = UIImage(named: "BG Portrait")
-        portraitBackgroundImage.contentMode = .scaleAspectFill
-        portraitBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        view.insertSubview(portraitBackgroundImage, belowSubview: hStackView)
-        
-        let landscapeBackgroundImage = UIImageView()
-        landscapeBackgroundImage.image = UIImage(named: "BG Landscape")
-        landscapeBackgroundImage.contentMode = .scaleAspectFill
-        landscapeBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        view.insertSubview(landscapeBackgroundImage, belowSubview: hStackView)
-        
-        vStackView.axis = .vertical
-        vStackView.spacing = 10
-        vStackView.distribution = .fill
-        hStackView.addArrangedSubview(vStackView)
-        
-        hStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
-        
-        NSLayoutConstraint.activate([
-            portraitBackgroundImage.topAnchor.constraint(equalTo: leverStackView.topAnchor),
-            portraitBackgroundImage.leadingAnchor.constraint(equalTo: leverStackView.leadingAnchor, constant: 8),
-            portraitBackgroundImage.bottomAnchor.constraint(equalTo: leverStackView.bottomAnchor),
-            portraitBackgroundImage.trailingAnchor.constraint(equalTo: leverStackView.trailingAnchor, constant: -8),
-            leverStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.375),
-            spacerView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.05),
-            vStackView.widthAnchor.constraint(equalTo: hStackView.widthAnchor, multiplier: 0.575)
-        ])
-        
-        setupPromptView()
-        setupPromptViewConstraint()
-        
-        setupGrid()
-        vStackView.addArrangedSubview(gridStackView)
-        
-        vStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            landscapeBackgroundImage.topAnchor.constraint(equalTo: secondArrayStackView.topAnchor, constant: 8),
-            landscapeBackgroundImage.leadingAnchor.constraint(equalTo: secondArrayStackView.leadingAnchor, constant: 8),
-            landscapeBackgroundImage.trailingAnchor.constraint(equalTo: secondArrayStackView.trailingAnchor, constant: -8),
-            landscapeBackgroundImage.bottomAnchor.constraint(equalTo: gridStackView.bottomAnchor),
-            promptStackView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.2),
-            secondArrayStackView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.2),
-            gridStackView.heightAnchor.constraint(equalTo: vStackView.heightAnchor, multiplier: 0.6)
-        ])
-        
     }
     
-    private func setupPromptView() {
-        promptStackView.axis = .horizontal
-        promptStackView.spacing = 10
-        promptStackView.distribution = .fill
-        
-        promptBackground = UIImageView(image: UIImage(named: "Prompt"))
-        promptBackground.contentMode = .scaleAspectFill
-        
-        promptLabel.text = "Quantum Encryption, Pseudo AIIDS"
-        promptLabel.textAlignment = .center
-        promptContainerView.addSubview(promptBackground)
-        promptContainerView.addSubview(promptLabel)
-        
-        timeLabel = UILabel()
-        timeLabel.text = "20 detik"
-        
-        promptStackView.addArrangedSubview(promptContainerView)
-        promptStackView.addArrangedSubview(timeLabel)
-        vStackView.addArrangedSubview(promptStackView)
-    }
-    
-    private func setupPromptViewConstraint() {
-        promptBackground.translatesAutoresizingMaskIntoConstraints = false
-        promptLabel.translatesAutoresizingMaskIntoConstraints = false
-        promptContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            promptContainerView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.8),
-            timeLabel.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.2),
-            
-            promptBackground.topAnchor.constraint(equalTo: promptContainerView.topAnchor, constant: 8),
-            promptBackground.leadingAnchor.constraint(equalTo: promptContainerView.leadingAnchor, constant: 8),
-            promptBackground.trailingAnchor.constraint(equalTo: promptContainerView.trailingAnchor, constant: -8),
-            promptBackground.bottomAnchor.constraint(equalTo: promptContainerView.bottomAnchor, constant: -8),
-            
-            promptLabel.centerXAnchor.constraint(equalTo: promptContainerView.centerXAnchor),
-            promptLabel.centerYAnchor.constraint(equalTo: promptContainerView.centerYAnchor)
-        ])
-    }
-    
-    private func setupGrid() {
+    private func setupSwitchViewContent() {
         firstArray.shuffle()
         secondArray.shuffle()
-        
-        secondArrayStackView.axis = .horizontal
-        secondArrayStackView.spacing = 10
-        secondArrayStackView.distribution = .fillEqually
-        vStackView.addArrangedSubview(secondArrayStackView)
-        
-        indicatorStackView.axis = .horizontal
-        indicatorStackView.spacing = 10
-        indicatorStackView.distribution = .fillEqually
         
         let rightIndicatorView = UIImageView()
         rightIndicatorView.contentMode = .scaleAspectFit
@@ -206,62 +97,107 @@ internal class SwitchGameViewController: UIViewController {
         secondArrayStackView.addArrangedSubview(indicatorStackView)
 
         for column in 0..<secondArray.count {
-            let label = UILabel()
-            label.text = secondArray[column]
-            label.textAlignment = .center
+            let label = SwitchGameViewController.createLabel(text: secondArray[column])
             secondArrayStackView.addArrangedSubview(label)
         }
-
-        gridStackView.axis = .vertical
-        gridStackView.spacing = 10
-        gridStackView.distribution = .fillEqually
-        vStackView.addArrangedSubview(gridStackView)
 
         for row in 0..<firstArray.count {
             let rowContainerStackView = UIStackView()
             rowContainerStackView.axis = .horizontal
-            rowContainerStackView.spacing = 10
+            rowContainerStackView.spacing = 8
             rowContainerStackView.alignment = .center
 
             let labelBox = UIView()
-            let label = UILabel()
-            label.text = firstArray[row]
-            label.textAlignment = .left
+            let label = SwitchGameViewController.createLabel(text: firstArray[row])
             label.adjustsFontSizeToFitWidth = true
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.setContentHuggingPriority(.required, for: .horizontal)
             labelBox.addSubview(label)
-            
-            NSLayoutConstraint.activate([
-                label.leadingAnchor.constraint(equalTo: labelBox.leadingAnchor),
-                label.centerYAnchor.constraint(equalTo: labelBox.centerYAnchor)
-            ])
             
             rowContainerStackView.addArrangedSubview(labelBox)
 
-            let rowStackView = UIStackView()
-            rowStackView.axis = .horizontal
-            rowStackView.spacing = 8
-            rowStackView.distribution = .fillEqually
+            let switchStackView = UIStackView()
+            switchStackView.axis = .horizontal
+            switchStackView.spacing = 8
+            switchStackView.distribution = .fillEqually
 
             for column in 0..<secondArray.count {
                 let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
 
                 button.addTarget(self, action: #selector(toggleButton(_:)), for: .touchUpInside)
 
-                rowStackView.addArrangedSubview(button)
+                switchStackView.addArrangedSubview(button)
             }
             
-            rowContainerStackView.addArrangedSubview(rowStackView)
-            labelBox.translatesAutoresizingMaskIntoConstraints = false
-            rowStackView.translatesAutoresizingMaskIntoConstraints = false
+            rowContainerStackView.addArrangedSubview(switchStackView)
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: labelBox.leadingAnchor),
+                label.trailingAnchor.constraint(equalTo: labelBox.trailingAnchor),
+                label.topAnchor.constraint(equalTo: labelBox.topAnchor),
+                label.bottomAnchor.constraint(equalTo: labelBox.bottomAnchor)
+            ])
             
             NSLayoutConstraint.activate([
                 labelBox.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
-                rowStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
+                switchStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
             ])
             gridStackView.addArrangedSubview(rowContainerStackView)
         }
+    }
+    
+    private func setupPromptView() {
+        let promptBackground = UIImageView(image: UIImage(named: "Prompt"))
+        promptBackground.contentMode = .scaleToFill
+        
+        let promptContainerView = UIView()
+        promptContainerView.addSubview(promptBackground)
+        promptContainerView.addSubview(promptLabel)
+        
+        promptStackView.addArrangedSubview(promptContainerView)
+        promptStackView.addArrangedSubview(timeLabel)
+        
+        promptBackground.translatesAutoresizingMaskIntoConstraints = false
+        promptLabel.translatesAutoresizingMaskIntoConstraints = false
+        promptContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            promptContainerView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.9),
+            timeLabel.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
+            
+            promptBackground.topAnchor.constraint(equalTo: promptContainerView.topAnchor, constant: 8),
+            promptBackground.leadingAnchor.constraint(equalTo: promptContainerView.leadingAnchor),
+            promptBackground.trailingAnchor.constraint(equalTo: promptContainerView.trailingAnchor, constant: -8),
+            promptBackground.bottomAnchor.constraint(equalTo: promptContainerView.bottomAnchor, constant: -8),
+            
+            promptLabel.centerXAnchor.constraint(equalTo: promptContainerView.centerXAnchor),
+            promptLabel.centerYAnchor.constraint(equalTo: promptContainerView.centerYAnchor)
+        ])
+    }
+    
+    override func setupGameContent() {
+        contentProvider = self
+        
+        let repository = MultipeerTaskRepository()
+        let useCase = SwitchGameUseCase(taskRepository: repository)
+        self.viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
+        
+        bindViewModel()
+    }
+    
+    private func setupPortraitBackgroundImage() {
+        let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
+        
+        leverStackView.insertSubview(portraitBackgroundImage, at: 0)
+        
+        NSLayoutConstraint.activate([
+            portraitBackgroundImage.topAnchor.constraint(equalTo: leverStackView.topAnchor),
+            portraitBackgroundImage.leadingAnchor.constraint(equalTo: leverStackView.leadingAnchor),
+            portraitBackgroundImage.bottomAnchor.constraint(equalTo: leverStackView.bottomAnchor),
+            portraitBackgroundImage.trailingAnchor.constraint(equalTo: leverStackView.trailingAnchor)
+        ])
+    }
+    
+    private func setupLandscapeBackgroundImage() {
     }
     
     private func bindViewModel() {
