@@ -19,13 +19,13 @@ class SwitchButton: UIButton {
     
     private func setupButton(_ firstLabel: String, _ secondLabel: String) {
         if let image = UIImage(named: "Switch Off")?.withRenderingMode(.alwaysOriginal) {
-            self.setImage(image, for: .normal)
+            setImage(image, for: .normal)
         }
         
-        self.imageView?.contentMode = .scaleAspectFit
-        self.backgroundColor = .clear
-        self.accessibilityLabel = "\(firstLabel) \(secondLabel)"
-        self.tag = 0
+        imageView?.contentMode = .scaleAspectFit
+        backgroundColor = .clear
+        accessibilityLabel = "\(firstLabel) \(secondLabel)"
+        tag = 0
     }
     
     func toggleState() {

@@ -21,7 +21,7 @@ class RootCoordinator {
         let useCase = SwitchGameUseCase(taskRepository: repository)
         let viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
 
-        let switchGameVC = SwitchGameViewController()
+        let switchGameVC = SwitchGameViewController(nibName: "SwitchGameViewController", bundle: nil)
         switchGameVC.viewModel = viewModel
         switchGameVC.coordinator = self
         

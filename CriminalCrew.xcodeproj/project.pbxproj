@@ -31,6 +31,7 @@
 		A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* NewPrompt.swift */; };
 		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
 		A761306C2CB681EE00EB0FDA /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* SwitchButton.swift */; };
+		A761307B2CB7D1E000EB0FDA /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307A2CB7D1E000EB0FDA /* ViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		A76130672CB50A4D00EB0FDA /* NewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrompt.swift; sourceTree = "<group>"; };
 		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
 		A761306B2CB681EE00EB0FDA /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		A761307A2CB7D1E000EB0FDA /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */,
+				A761307A2CB7D1E000EB0FDA /* ViewController+Ext.swift */,
 				A74A09842CAE238C00456F30 /* Error+ext.swift */,
 			);
 			path = Helpers;
@@ -541,6 +544,7 @@
 				A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */,
 				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
 				A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */,
+				A761307B2CB7D1E000EB0FDA /* ViewController+Ext.swift in Sources */,
 				A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */,
 				A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */,
 				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
