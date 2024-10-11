@@ -46,7 +46,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         ])
         
         setupLeverViewContent()
-        setupPortraitBackgroundImage()
         
         let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
         
@@ -63,35 +62,34 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     internal func createSecondPanelView() -> UIView {
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(switchContainerStackView)
+        let secondPanelContainerView = UIView()
+        secondPanelContainerView.translatesAutoresizingMaskIntoConstraints = false
+        secondPanelContainerView.addSubview(switchContainerStackView)
         
         switchContainerStackView.addArrangedSubview(secondArrayStackView)
         switchContainerStackView.addArrangedSubview(gridStackView)
         switchContainerStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            switchContainerStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
-            switchContainerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
-            switchContainerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            switchContainerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
+            switchContainerStackView.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor, constant: 16),
+            switchContainerStackView.leadingAnchor.constraint(equalTo: secondPanelContainerView.leadingAnchor, constant: 16),
+            switchContainerStackView.trailingAnchor.constraint(equalTo: secondPanelContainerView.trailingAnchor, constant: -16),
+            switchContainerStackView.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor, constant: -16)
         ])
         setupSwitchViewContent()
-        setupLandscapeBackgroundImage()
         
         let landscapeBackgroundImage = addBackgroundImageView("BG Landscape")
         
-        containerView.insertSubview(landscapeBackgroundImage, at: 0)
+        secondPanelContainerView.insertSubview(landscapeBackgroundImage, at: 0)
         
         NSLayoutConstraint.activate([
-            landscapeBackgroundImage.topAnchor.constraint(equalTo: containerView.topAnchor),
-            landscapeBackgroundImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            landscapeBackgroundImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            landscapeBackgroundImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            landscapeBackgroundImage.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor),
+            landscapeBackgroundImage.leadingAnchor.constraint(equalTo: secondPanelContainerView.leadingAnchor),
+            landscapeBackgroundImage.trailingAnchor.constraint(equalTo: secondPanelContainerView.trailingAnchor),
+            landscapeBackgroundImage.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor)
         ])
         
-        return containerView
+        return secondPanelContainerView
     }
     
     internal func createPromptView() -> UIView {
@@ -100,9 +98,9 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     private func setupLeverViewContent() {
-        
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
+        leverStackView.addArrangedSubview(leverIndicatorStackView)
         leverStackView.addArrangedSubview(notifyCoordinatorButton)
     }
     
@@ -208,12 +206,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         self.viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
         
         bindViewModel()
-    }
-    
-    private func setupPortraitBackgroundImage() {
-    }
-    
-    private func setupLandscapeBackgroundImage() {
     }
     
     private func bindViewModel() {

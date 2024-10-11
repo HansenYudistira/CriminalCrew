@@ -42,6 +42,7 @@ open class BaseGameViewController: UIViewController {
         super.viewDidLoad()
         forceLandscapeOrientation()
         setupView()
+        setupGameContent()
         
         if let contentProvider = contentProvider {
             addContentToFirstPanelView(contentProvider.createFirstPanelView())
@@ -49,7 +50,6 @@ open class BaseGameViewController: UIViewController {
             addContentToPromptView(contentProvider.createPromptView())
         }
         
-        setupGameContent()
     }
     
     private func forceLandscapeOrientation() {
