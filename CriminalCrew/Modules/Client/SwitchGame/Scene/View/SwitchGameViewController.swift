@@ -15,6 +15,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     internal var coordinator: RootCoordinator?
     
     private let leverStackView: UIStackView = createVerticalStackView()
+    private let leverIndicatorStackView: UIStackView = createHorizontalStackView()
     private let gridStackView: UIStackView = createVerticalStackView()
     private let switchContainerStackView: UIStackView = createVerticalStackView()
     private let secondArrayStackView: UIStackView = createHorizontalStackView()
@@ -32,9 +33,33 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     private let didPressedButton = PassthroughSubject<String, Never>()
     
     internal func createFirstPanelView() -> UIView {
+        let firstPanelContainerView = UIView()
+        firstPanelContainerView.translatesAutoresizingMaskIntoConstraints = false
+        firstPanelContainerView.addSubview(leverStackView)
+        leverStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            leverStackView.topAnchor.constraint(equalTo: firstPanelContainerView.topAnchor, constant: 16),
+            leverStackView.leadingAnchor.constraint(equalTo: firstPanelContainerView.leadingAnchor, constant: 16),
+            leverStackView.trailingAnchor.constraint(equalTo: firstPanelContainerView.trailingAnchor, constant: -16),
+            leverStackView.bottomAnchor.constraint(equalTo: firstPanelContainerView.bottomAnchor, constant: -16)
+        ])
+        
         setupLeverViewContent()
         setupPortraitBackgroundImage()
-        return leverStackView
+        
+        let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
+        
+        firstPanelContainerView.insertSubview(portraitBackgroundImage, at: 0)
+        
+        NSLayoutConstraint.activate([
+            portraitBackgroundImage.topAnchor.constraint(equalTo: firstPanelContainerView.topAnchor),
+            portraitBackgroundImage.leadingAnchor.constraint(equalTo: firstPanelContainerView.leadingAnchor),
+            portraitBackgroundImage.bottomAnchor.constraint(equalTo: firstPanelContainerView.bottomAnchor),
+            portraitBackgroundImage.trailingAnchor.constraint(equalTo: firstPanelContainerView.trailingAnchor)
+        ])
+        
+        return firstPanelContainerView
     }
     
     internal func createSecondPanelView() -> UIView {
@@ -50,7 +75,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
             switchContainerStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
             switchContainerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             switchContainerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            switchContainerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8)
+            switchContainerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
         ])
         setupSwitchViewContent()
         setupLandscapeBackgroundImage()
@@ -75,6 +100,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     private func setupLeverViewContent() {
+        
         notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
         notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
         leverStackView.addArrangedSubview(notifyCoordinatorButton)
@@ -185,16 +211,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     private func setupPortraitBackgroundImage() {
-        let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
-        
-        leverStackView.insertSubview(portraitBackgroundImage, at: 0)
-        
-        NSLayoutConstraint.activate([
-            portraitBackgroundImage.topAnchor.constraint(equalTo: leverStackView.topAnchor),
-            portraitBackgroundImage.leadingAnchor.constraint(equalTo: leverStackView.leadingAnchor),
-            portraitBackgroundImage.bottomAnchor.constraint(equalTo: leverStackView.bottomAnchor),
-            portraitBackgroundImage.trailingAnchor.constraint(equalTo: leverStackView.trailingAnchor)
-        ])
     }
     
     private func setupLandscapeBackgroundImage() {
