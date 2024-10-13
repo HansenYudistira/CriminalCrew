@@ -9,14 +9,13 @@ import UIKit
 
 open class BaseGameViewController: UIViewController {
     
-    var contentProvider: GameContentProvider?
+    internal var contentProvider: GameContentProvider?
     
     private let firstPanelView = UIView()
     private let secondPanelView = UIView()
     private let promptView = UIView()
     
     public let mainStackView: UIStackView = UIStackView()
-    
     public let rightStackView: UIStackView = UIStackView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

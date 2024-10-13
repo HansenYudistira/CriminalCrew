@@ -24,7 +24,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     
     private let promptStackView: UIStackView = createHorizontalStackView()
     private var promptView: PromptView?
-    private var timeLabel: UILabel = createLabel(text: "20")
+    private var timeView: TimeView?
     
     private var notifyCoordinatorButton: UIButton = UIButton(type: .system)
     private var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
@@ -97,15 +97,17 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     
     internal func createPromptView() -> UIView {
         promptView = PromptView(label: "Initial Task")
+        timeView = TimeView()
         
-        if let promptView = promptView {
+        if let promptView = promptView, let timeView = timeView {
             promptView.translatesAutoresizingMaskIntoConstraints = false
             promptStackView.addArrangedSubview(promptView)
-            promptStackView.addArrangedSubview(timeLabel)
+            promptStackView.addArrangedSubview(timeView)
             NSLayoutConstraint.activate([
                 promptView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.9),
-                timeLabel.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
+                timeView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
             ])
+            
             return promptStackView
         }
         

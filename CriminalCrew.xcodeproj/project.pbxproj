@@ -36,6 +36,7 @@
 		A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */; };
 		A76130812CB9038400EB0FDA /* LeverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */; };
 		A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130822CBB9E8D00EB0FDA /* cPromptView.swift */; };
+		A76130852CBBA78000EB0FDA /* cTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130842CBBA78000EB0FDA /* cTimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pGameContentProvider.swift; sourceTree = "<group>"; };
 		A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeverIndicatorView.swift; sourceTree = "<group>"; };
 		A76130822CBB9E8D00EB0FDA /* cPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cPromptView.swift; sourceTree = "<group>"; };
+		A76130842CBBA78000EB0FDA /* cTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cTimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 				A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */,
 				A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */,
 				A76130822CBB9E8D00EB0FDA /* cPromptView.swift */,
+				A76130842CBBA78000EB0FDA /* cTimeView.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */,
 				A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */,
 				A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */,
+				A76130852CBBA78000EB0FDA /* cTimeView.swift in Sources */,
 				A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */,
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
 				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
