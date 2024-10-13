@@ -20,9 +20,8 @@ internal class TimeView: UIImageView {
     
     private func setupView () {
         let timeImage = UIImage(named: "Timer")
-        self.image = timeImage
-        self.contentMode = .scaleToFill
-        
+        image = timeImage
+        contentMode = .scaleToFill
     }
     
 }

@@ -8,20 +8,20 @@
 import Foundation
 import GamePantry
 
-struct NewTask: GPEvent {
-    var id: String = "NewTask"
+internal struct NewTask: GPEvent {
+    internal var id: String = "NewTask"
 
-    let purpose: String = "Get a New Task"
+    internal let purpose: String = "Get a New Task"
     
-    var instanciatedOn: Date = .now
+    internal var instanciatedOn: Date = .now
     
-    var payload: [ String : Any ]
+    internal var payload: [ String : Any ]
     
     init(payload: [String : Any]) {
         self.payload = payload
     }
     
-    static func == (lhs: NewTask, rhs: [String]) -> Bool {
+    internal static func == (lhs: NewTask, rhs: [String]) -> Bool {
         guard let lhsTask = lhs.payload["TaskToBeDone"] as? [String] else {
             return false
         }
@@ -29,7 +29,7 @@ struct NewTask: GPEvent {
         return Set(lhsTask) == Set(rhs)
     }
     
-    static func == (lhs: NewTask, rhs: [[String]]) -> Bool {
+    internal static func == (lhs: NewTask, rhs: [[String]]) -> Bool {
         guard let lhsTask = lhs.payload["TaskToBeDone"] as? [[String]] else {
             return false
         }
@@ -39,7 +39,7 @@ struct NewTask: GPEvent {
 }
 
 extension NewTask: GPReceivableEvent {
-    static func construct(from payload: [String : Any]) -> NewTask? {
+    internal static func construct(from payload: [String : Any]) -> NewTask? {
         guard let _ = payload["TaskToBeDone"] as? [String] else { return nil }
         return .init(payload: payload)
     }

@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 internal class SwitchGameViewModel {
+    
     private var cancellables = Set<AnyCancellable>()
     private let switchGameUseCase: SwitchGameUseCase
     
@@ -19,11 +20,11 @@ internal class SwitchGameViewModel {
         self.switchGameUseCase = switchGameUseCase
     }
     
-    struct Input {
+    internal struct Input {
         let didPressedButton: PassthroughSubject<String, Never>
     }
     
-    func bind(_ input: Input) {
+    internal func bind(_ input: Input) {
         input.didPressedButton
             .receive(on: DispatchQueue.main)
             .sink { [weak self] accessibilityLabel in
@@ -33,7 +34,7 @@ internal class SwitchGameViewModel {
             .store(in: &cancellables)
     }
     
-    func toggleButton(label: String) {
+    private func toggleButton(label: String) {
         if pressedButton.contains(label) {
             removeButtonLabel(label)
         } else {
@@ -41,15 +42,15 @@ internal class SwitchGameViewModel {
         }
     }
     
-    func addButtonLabel(_ label: String) {
+    private func addButtonLabel(_ label: String) {
         pressedButton.append(label)
     }
     
-    func removeButtonLabel(_ label: String) {
+    private func removeButtonLabel(_ label: String) {
         pressedButton.removeAll { $0 == label }
     }
     
-    func validateTask() {
+    private func validateTask() {
         let isValid = switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
         if isValid {
             completeTask()
@@ -58,7 +59,7 @@ internal class SwitchGameViewModel {
         }
     }
     
-    func completeTask() {
+    private func completeTask() {
         DispatchQueue.global(qos: .background).async {
             self.switchGameUseCase.completeTask { [weak self] isSuccess in
                 DispatchQueue.main.async {
@@ -68,7 +69,14 @@ internal class SwitchGameViewModel {
         }
     }
     
-    func wrongAnswer() {
+    private func wrongAnswer() {
         taskCompletionStatus.send(false)
     }
+    
+    deinit {
+        cancellables.forEach { cancellable in
+            cancellable.cancel()
+        }
+    }
+    
 }

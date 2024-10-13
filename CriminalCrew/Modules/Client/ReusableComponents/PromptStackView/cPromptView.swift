@@ -25,10 +25,13 @@ internal class PromptView: UIView {
         promptBackground.contentMode = .scaleToFill
         promptBackground.translatesAutoresizingMaskIntoConstraints = false
         promptLabel.text = label
+        promptLabel.numberOfLines = 0
+        promptLabel.textAlignment = .center
+        promptLabel.font = UIFont(name: "GothamSSm", size: 17)
         promptLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(promptBackground)
-        self.addSubview(promptLabel)
+        addSubview(promptBackground)
+        addSubview(promptLabel)
         
         NSLayoutConstraint.activate([
             promptBackground.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),

@@ -8,9 +8,9 @@
 import Foundation
 import GamePantry
 
-struct TaskDone {
-    let purpose: String = "SentTaskReport"
-    var payload: [String : Any]
+internal struct TaskDone {
+    internal let purpose: String = "SentTaskReport"
+    internal var payload: [String : Any]
     
     init(payload: [String : Any]) {
         self.payload = payload
@@ -18,25 +18,25 @@ struct TaskDone {
 }
 
 extension TaskDone: GPSendableEvent {
-    static func construct(from payload: [String : Any]) -> TaskDone? {
+    internal static func construct(from payload: [String : Any]) -> TaskDone? {
         guard
             let _ : Bool = payload["isCompleted"] as? Bool else { return nil }
         return TaskDone(payload: payload)
     }
     
-    var id: String {
+    internal var id: String {
         "TaskDone"
     }
     
-    var instanciatedOn: Date {
+    internal var instanciatedOn: Date {
         .now
     }
     
-    func value(for key: PayloadKeys) -> Any? {
+    internal func value(for key: PayloadKeys) -> Any? {
         self.payload[key.rawValue]!
     }
     
-    func representedAsData() -> Data {
+    internal func representedAsData() -> Data {
         return dataFrom {
             [
                 PayloadKeys.instanciatedOn.rawValue: "\(instanciatedOn)",
@@ -47,7 +47,7 @@ extension TaskDone: GPSendableEvent {
         }!
     }
     
-    enum PayloadKeys : String, CaseIterable {
+    internal enum PayloadKeys : String, CaseIterable {
         case isCompleted = "isCompleted"
         case taskId = "taskId"
         case id = "id"

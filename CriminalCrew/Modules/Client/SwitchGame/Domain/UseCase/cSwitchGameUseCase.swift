@@ -13,18 +13,19 @@ protocol ValidateGameUseCaseProtocol {
     func validateGameLogic(pressedButtons: [[String]]) -> Bool
 }
 
-class SwitchGameUseCase {
+internal class SwitchGameUseCase {
+    
     private let taskRepository: TaskRepository
-    var newTask: NewTask
-    var taskDone: TaskDone
+    private var newTask: NewTask
+    private var taskDone: TaskDone
     
     init(taskRepository: TaskRepository) {
         self.taskRepository = taskRepository
-        newTask = NewTask(payload: ["taskId": "1", "TaskToBeDone": ["Quantum Encryption", "Pseudo AIIDS"]])
+        newTask = NewTask(payload: ["taskId": "1", "TaskToBeDone": ["Red", "Quantum Encryption", "Pseudo AIIDS"]])
         taskDone = TaskDone(payload: [:])
     }
     
-    func completeTask(completion: @escaping (Bool) -> Void) {
+    internal func completeTask(completion: @escaping (Bool) -> Void) {
         let updatedTaskDone = updatedPayloadTaskDone(
             newPayload: [
                 "taskId": newTask.payload["taskId"] ?? "",
@@ -38,17 +39,20 @@ class SwitchGameUseCase {
         }
     }
     
-    func updatedPayloadTaskDone(newPayload: [String: Any]) -> TaskDone {
+    private func updatedPayloadTaskDone(newPayload: [String: Any]) -> TaskDone {
         return TaskDone.construct(from: newPayload)!
     }
+    
 }
 
 extension SwitchGameUseCase: ValidateGameUseCaseProtocol {
-    func validateGameLogic(pressedButtons: [String]) -> Bool {
+    
+    internal func validateGameLogic(pressedButtons: [String]) -> Bool {
         return newTask == pressedButtons
     }
     
-    func validateGameLogic(pressedButtons: [[String]]) -> Bool {
+    internal func validateGameLogic(pressedButtons: [[String]]) -> Bool {
         return newTask == pressedButtons
     }
+    
 }

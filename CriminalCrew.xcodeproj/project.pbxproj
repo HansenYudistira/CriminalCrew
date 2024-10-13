@@ -11,32 +11,38 @@
 		A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834DE2CA6BE990066AEA4 /* AppDelegate.swift */; };
 		A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E52CA6BE990066AEA4 /* SceneDelegate.swift */; };
 		A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */; };
-		A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */; };
+		A70834F62CA6BFF80066AEA4 /* cSwitchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834F52CA6BFF80066AEA4 /* cSwitchGameViewController.swift */; };
 		A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */; };
-		A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */; };
-		A70835102CA6C1DB0066AEA4 /* SwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */; };
+		A708350C2CA6C1780066AEA4 /* cSwitchGameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350B2CA6C1780066AEA4 /* cSwitchGameUseCase.swift */; };
+		A70835102CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350F2CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift */; };
 		A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */; };
 		A70835152CA6C96B0066AEA4 /* CriminalCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */; };
 		A70835192CA6C96D0066AEA4 /* CriminalCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */; };
 		A708351A2CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */; };
 		A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708351D2CAA83940066AEA4 /* EmptyResponse.swift */; };
 		A70835242CAAB01C0066AEA4 /* GamePantry in Frameworks */ = {isa = PBXBuildFile; productRef = A70835232CAAB01C0066AEA4 /* GamePantry */; };
-		A70835262CAD1C780066AEA4 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835252CAD1C780066AEA4 /* TaskDone.swift */; };
-		A70835282CAD1E3B0066AEA4 /* NewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835272CAD1E3B0066AEA4 /* NewTask.swift */; };
+		A70835262CAD1C780066AEA4 /* sTaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835252CAD1C780066AEA4 /* sTaskDone.swift */; };
+		A70835282CAD1E3B0066AEA4 /* sNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835272CAD1E3B0066AEA4 /* sNewTask.swift */; };
 		A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835292CAD22F10066AEA4 /* NetworkManager.swift */; };
 		A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A097E2CAE232D00456F30 /* NetworkError.swift */; };
 		A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09802CAE236000456F30 /* BaseResponse.swift */; };
 		A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09822CAE236F00456F30 /* ResponseError.swift */; };
 		A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09842CAE238C00456F30 /* Error+ext.swift */; };
-		A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* NewPrompt.swift */; };
+		A76130682CB50A4D00EB0FDA /* sNewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */; };
 		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
-		A761306C2CB681EE00EB0FDA /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* SwitchButton.swift */; };
+		A761306C2CB681EE00EB0FDA /* cSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */; };
 		A761307B2CB7D1E000EB0FDA /* ViewController+createHorVer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307A2CB7D1E000EB0FDA /* ViewController+createHorVer.swift */; };
 		A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */; };
 		A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */; };
-		A76130812CB9038400EB0FDA /* LeverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */; };
+		A76130812CB9038400EB0FDA /* cLeverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130802CB9038400EB0FDA /* cLeverIndicatorView.swift */; };
 		A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130822CBB9E8D00EB0FDA /* cPromptView.swift */; };
 		A76130852CBBA78000EB0FDA /* cTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130842CBBA78000EB0FDA /* cTimeView.swift */; };
+		A76130872CBBB90200EB0FDA /* cLeverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130862CBBB90200EB0FDA /* cLeverView.swift */; };
+		A761308C2CBBD52800EB0FDA /* cPromptStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761308B2CBBD52800EB0FDA /* cPromptStackView.swift */; };
+		A761308E2CBBDA5200EB0FDA /* cLeverPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761308D2CBBDA5200EB0FDA /* cLeverPanelView.swift */; };
+		A76130902CBBDB5800EB0FDA /* cLeverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761308F2CBBDB5800EB0FDA /* cLeverButton.swift */; };
+		A76130922CBBE61E00EB0FDA /* eButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130912CBBE61E00EB0FDA /* eButtonState.swift */; };
+		A76130942CBBE82F00EB0FDA /* pToggleButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,31 +71,37 @@
 		A70834E02CA6BE990066AEA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A70834E52CA6BE990066AEA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewController.swift; sourceTree = "<group>"; };
+		A70834F52CA6BFF80066AEA4 /* cSwitchGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchGameViewController.swift; sourceTree = "<group>"; };
 		A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameUseCase.swift; sourceTree = "<group>"; };
-		A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGameViewModel.swift; sourceTree = "<group>"; };
+		A708350B2CA6C1780066AEA4 /* cSwitchGameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchGameUseCase.swift; sourceTree = "<group>"; };
+		A708350F2CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchGameViewModel.swift; sourceTree = "<group>"; };
 		A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerTaskRepository.swift; sourceTree = "<group>"; };
 		A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewTests.swift; sourceTree = "<group>"; };
 		A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITests.swift; sourceTree = "<group>"; };
 		A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A708351D2CAA83940066AEA4 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
-		A70835252CAD1C780066AEA4 /* TaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
-		A70835272CAD1E3B0066AEA4 /* NewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTask.swift; sourceTree = "<group>"; };
+		A70835252CAD1C780066AEA4 /* sTaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sTaskDone.swift; sourceTree = "<group>"; };
+		A70835272CAD1E3B0066AEA4 /* sNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sNewTask.swift; sourceTree = "<group>"; };
 		A70835292CAD22F10066AEA4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A74A097E2CAE232D00456F30 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A74A09802CAE236000456F30 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		A74A09822CAE236F00456F30 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		A74A09842CAE238C00456F30 /* Error+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+ext.swift"; sourceTree = "<group>"; };
-		A76130672CB50A4D00EB0FDA /* NewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrompt.swift; sourceTree = "<group>"; };
+		A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sNewPrompt.swift; sourceTree = "<group>"; };
 		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
-		A761306B2CB681EE00EB0FDA /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchButton.swift; sourceTree = "<group>"; };
 		A761307A2CB7D1E000EB0FDA /* ViewController+createHorVer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+createHorVer.swift"; sourceTree = "<group>"; };
 		A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cBaseGameViewController.swift; sourceTree = "<group>"; };
 		A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pGameContentProvider.swift; sourceTree = "<group>"; };
-		A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeverIndicatorView.swift; sourceTree = "<group>"; };
+		A76130802CB9038400EB0FDA /* cLeverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverIndicatorView.swift; sourceTree = "<group>"; };
 		A76130822CBB9E8D00EB0FDA /* cPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cPromptView.swift; sourceTree = "<group>"; };
 		A76130842CBBA78000EB0FDA /* cTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cTimeView.swift; sourceTree = "<group>"; };
+		A76130862CBBB90200EB0FDA /* cLeverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverView.swift; sourceTree = "<group>"; };
+		A761308B2CBBD52800EB0FDA /* cPromptStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cPromptStackView.swift; sourceTree = "<group>"; };
+		A761308D2CBBDA5200EB0FDA /* cLeverPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverPanelView.swift; sourceTree = "<group>"; };
+		A761308F2CBBDB5800EB0FDA /* cLeverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverButton.swift; sourceTree = "<group>"; };
+		A76130912CBBE61E00EB0FDA /* eButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eButtonState.swift; sourceTree = "<group>"; };
+		A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pToggleButtonState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,9 +214,11 @@
 		A70834F82CA6C0490066AEA4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A70834F52CA6BFF80066AEA4 /* SwitchGameViewController.swift */,
-				A761306B2CB681EE00EB0FDA /* SwitchButton.swift */,
-				A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */,
+				A76130912CBBE61E00EB0FDA /* eButtonState.swift */,
+				A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */,
+				A76130892CBBCC4C00EB0FDA /* Switch */,
+				A76130882CBBB95200EB0FDA /* Lever */,
+				A70834F52CA6BFF80066AEA4 /* cSwitchGameViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,7 +226,7 @@
 		A70834F92CA6C0570066AEA4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A708350F2CA6C1DB0066AEA4 /* SwitchGameViewModel.swift */,
+				A708350F2CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -238,10 +252,9 @@
 		A70834FD2CA6C0B40066AEA4 /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				A761308A2CBBD51900EB0FDA /* PromptStackView */,
 				A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */,
 				A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */,
-				A76130822CBB9E8D00EB0FDA /* cPromptView.swift */,
-				A76130842CBBA78000EB0FDA /* cTimeView.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -266,7 +279,7 @@
 		A70835022CA6C0F80066AEA4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A708350B2CA6C1780066AEA4 /* SwitchGameUseCase.swift */,
+				A708350B2CA6C1780066AEA4 /* cSwitchGameUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -331,7 +344,7 @@
 		A708350D2CA6C1800066AEA4 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				A70835252CAD1C780066AEA4 /* TaskDone.swift */,
+				A70835252CAD1C780066AEA4 /* sTaskDone.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -339,8 +352,8 @@
 		A708350E2CA6C1870066AEA4 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				A70835272CAD1E3B0066AEA4 /* NewTask.swift */,
-				A76130672CB50A4D00EB0FDA /* NewPrompt.swift */,
+				A70835272CAD1E3B0066AEA4 /* sNewTask.swift */,
+				A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -403,6 +416,35 @@
 			children = (
 			);
 			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		A76130882CBBB95200EB0FDA /* Lever */ = {
+			isa = PBXGroup;
+			children = (
+				A76130862CBBB90200EB0FDA /* cLeverView.swift */,
+				A76130802CB9038400EB0FDA /* cLeverIndicatorView.swift */,
+				A761308D2CBBDA5200EB0FDA /* cLeverPanelView.swift */,
+				A761308F2CBBDB5800EB0FDA /* cLeverButton.swift */,
+			);
+			path = Lever;
+			sourceTree = "<group>";
+		};
+		A76130892CBBCC4C00EB0FDA /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */,
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
+		A761308A2CBBD51900EB0FDA /* PromptStackView */ = {
+			isa = PBXGroup;
+			children = (
+				A76130822CBB9E8D00EB0FDA /* cPromptView.swift */,
+				A76130842CBBA78000EB0FDA /* cTimeView.swift */,
+				A761308B2CBBD52800EB0FDA /* cPromptStackView.swift */,
+			);
+			path = PromptStackView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -546,30 +588,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */,
+				A76130942CBBE82F00EB0FDA /* pToggleButtonState.swift in Sources */,
+				A76130872CBBB90200EB0FDA /* cLeverView.swift in Sources */,
 				A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */,
-				A76130682CB50A4D00EB0FDA /* NewPrompt.swift in Sources */,
+				A76130682CB50A4D00EB0FDA /* sNewPrompt.swift in Sources */,
+				A761308E2CBBDA5200EB0FDA /* cLeverPanelView.swift in Sources */,
 				A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */,
 				A76130852CBBA78000EB0FDA /* cTimeView.swift in Sources */,
 				A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */,
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
-				A708350C2CA6C1780066AEA4 /* SwitchGameUseCase.swift in Sources */,
-				A761306C2CB681EE00EB0FDA /* SwitchButton.swift in Sources */,
+				A708350C2CA6C1780066AEA4 /* cSwitchGameUseCase.swift in Sources */,
+				A761306C2CB681EE00EB0FDA /* cSwitchButton.swift in Sources */,
 				A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */,
 				A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */,
-				A70835282CAD1E3B0066AEA4 /* NewTask.swift in Sources */,
-				A70835262CAD1C780066AEA4 /* TaskDone.swift in Sources */,
-				A70835102CA6C1DB0066AEA4 /* SwitchGameViewModel.swift in Sources */,
+				A70835282CAD1E3B0066AEA4 /* sNewTask.swift in Sources */,
+				A70835262CAD1C780066AEA4 /* sTaskDone.swift in Sources */,
+				A76130902CBBDB5800EB0FDA /* cLeverButton.swift in Sources */,
+				A70835102CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift in Sources */,
 				A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */,
 				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
 				A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */,
+				A76130922CBBE61E00EB0FDA /* eButtonState.swift in Sources */,
 				A761307B2CB7D1E000EB0FDA /* ViewController+createHorVer.swift in Sources */,
+				A761308C2CBBD52800EB0FDA /* cPromptStackView.swift in Sources */,
 				A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */,
 				A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */,
 				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
 				A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */,
 				A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */,
-				A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */,
-				A76130812CB9038400EB0FDA /* LeverIndicatorView.swift in Sources */,
+				A70834F62CA6BFF80066AEA4 /* cSwitchGameViewController.swift in Sources */,
+				A76130812CB9038400EB0FDA /* cLeverIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

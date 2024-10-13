@@ -10,47 +10,48 @@ import Combine
 
 internal class SwitchGameViewController: BaseGameViewController, GameContentProvider {
     
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     internal var viewModel: SwitchGameViewModel?
     internal var coordinator: RootCoordinator?
     
-    private let leverStackView: UIStackView = createVerticalStackView()
-    private let leverIndicatorStackView: UIStackView = createHorizontalStackView()
+    private var leverView: LeverView?
     
     private let gridStackView: UIStackView = createVerticalStackView()
     private let switchContainerStackView: UIStackView = createVerticalStackView()
     private let secondArrayStackView: UIStackView = createHorizontalStackView()
     private let indicatorStackView: UIStackView = createHorizontalStackView()
     
-    private let promptStackView: UIStackView = createHorizontalStackView()
-    private var promptView: PromptView?
-    private var timeView: TimeView?
+    private var promptStackView: PromptStackView?
     
     private var notifyCoordinatorButton: UIButton = UIButton(type: .system)
     private var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
     private var firstArray : [String] = ["Quantum", "Pseudo"]
     private var secondArray : [String] = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
     
-    private let didPressedButton = PassthroughSubject<String, Never>()
+    private let didPressedButton: PassthroughSubject = PassthroughSubject<String, Never>()
     
     internal func createFirstPanelView() -> UIView {
         let firstPanelContainerView = UIView()
-        firstPanelContainerView.translatesAutoresizingMaskIntoConstraints = false
-        firstPanelContainerView.addSubview(leverStackView)
-        leverStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            leverStackView.topAnchor.constraint(equalTo: firstPanelContainerView.topAnchor, constant: 16),
-            leverStackView.leadingAnchor.constraint(equalTo: firstPanelContainerView.leadingAnchor, constant: 16),
-            leverStackView.trailingAnchor.constraint(equalTo: firstPanelContainerView.trailingAnchor, constant: -16),
-            leverStackView.bottomAnchor.constraint(equalTo: firstPanelContainerView.bottomAnchor, constant: -16)
-        ])
-        
-        setupLeverViewContent()
         
         let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
+        portraitBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        firstPanelContainerView.addSubview(portraitBackgroundImage)
         
-        firstPanelContainerView.insertSubview(portraitBackgroundImage, at: 0)
+        leverView = LeverView()
+        
+        if let leverView = leverView {
+            firstPanelContainerView.addSubview(leverView)
+            leverView.translatesAutoresizingMaskIntoConstraints = false
+            
+            leverView.leverPanelView?.delegate = self
+            
+            NSLayoutConstraint.activate([
+                leverView.topAnchor.constraint(equalTo: firstPanelContainerView.topAnchor, constant: 16),
+                leverView.leadingAnchor.constraint(equalTo: firstPanelContainerView.leadingAnchor, constant: 16),
+                leverView.trailingAnchor.constraint(equalTo: firstPanelContainerView.trailingAnchor, constant: -16),
+                leverView.bottomAnchor.constraint(equalTo: firstPanelContainerView.bottomAnchor, constant: -16)
+            ])
+        }
         
         NSLayoutConstraint.activate([
             portraitBackgroundImage.topAnchor.constraint(equalTo: firstPanelContainerView.topAnchor),
@@ -63,7 +64,9 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     internal func createSecondPanelView() -> UIView {
-        let secondPanelContainerView = UIView()
+        setupSwitchViewContent()
+        
+        let secondPanelContainerView: UIView = UIView()
         secondPanelContainerView.translatesAutoresizingMaskIntoConstraints = false
         secondPanelContainerView.addSubview(switchContainerStackView)
         
@@ -79,7 +82,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
             secondArrayStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.2),
             gridStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.8)
         ])
-        setupSwitchViewContent()
         
         let landscapeBackgroundImage = addBackgroundImageView("BG Landscape")
         
@@ -96,29 +98,15 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     internal func createPromptView() -> UIView {
-        promptView = PromptView(label: "Initial Task")
-        timeView = TimeView()
+        promptStackView = PromptStackView()
         
-        if let promptView = promptView, let timeView = timeView {
-            promptView.translatesAutoresizingMaskIntoConstraints = false
-            promptStackView.addArrangedSubview(promptView)
-            promptStackView.addArrangedSubview(timeView)
-            NSLayoutConstraint.activate([
-                promptView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.9),
-                timeView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
-            ])
-            
+        if let promptStackView = promptStackView {
+            promptStackView.promptView.promptLabel.text = "Red, Quantum Encryption, Pseudo AIIDS"
             return promptStackView
+        } else {
+            print("Prompt View failed to load!!!")
+            return UIView()
         }
-        
-        return UIView()
-    }
-    
-    private func setupLeverViewContent() {
-        notifyCoordinatorButton.setTitle("Notify Coordinator", for: .normal)
-        notifyCoordinatorButton.addTarget(self, action: #selector(didCompleteQuickTimeEvent), for: .touchUpInside)
-        leverStackView.addArrangedSubview(leverIndicatorStackView)
-        leverStackView.addArrangedSubview(notifyCoordinatorButton)
     }
     
     private func setupSwitchViewContent() {
@@ -208,8 +196,10 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     @objc private func toggleButton(_ sender: SwitchButton) {
-        didPressedButton.send((sender.accessibilityLabel!))
-        sender.toggleState()
+        if let label = sender.accessibilityLabel {
+            didPressedButton.send(label)
+        }
+        sender.toggleButtonState()
     }
     
     @objc private func didCompleteQuickTimeEvent() {
@@ -237,5 +227,26 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         }
     }
     
+    deinit {
+        cancellables.forEach { cancellable in
+            cancellable.cancel()
+        }
+    }
+    
 }
 
+extension SwitchGameViewController: LeverPanelViewDelegate {
+    
+    internal func leverTapped(sender: LeverButton) {
+        if let label = sender.accessibilityLabel {
+            didPressedButton.send(label)
+        }
+        
+        if let indicator = leverView?.leverIndicatorView.first(where: { $0.bulbColor == sender.leverColor }) {
+            indicator.toggleState()
+        }
+        
+        sender.toggleButtonState()
+    }
+    
+}

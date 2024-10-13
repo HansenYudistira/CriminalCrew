@@ -73,12 +73,14 @@ open class BaseGameViewController: UIViewController {
             firstPanelView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.4),
             rightStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.6),
             promptView.heightAnchor.constraint(equalTo: rightStackView.heightAnchor, multiplier: 0.4),
-            secondPanelView.heightAnchor.constraint(equalTo: rightStackView.heightAnchor, multiplier: 0.6)
+            promptView.widthAnchor.constraint(equalTo: rightStackView.widthAnchor ),
+            secondPanelView.heightAnchor.constraint(equalTo: rightStackView.heightAnchor, multiplier: 0.6),
+            secondPanelView.widthAnchor.constraint(equalTo: rightStackView.widthAnchor)
         ])
     }
     
     open func setupGameContent() {
-        /// for subclass to override
+        /// for subclass to override to fill their game settings
     }
     
     public func addContentToFirstPanelView(_ view: UIView) {
