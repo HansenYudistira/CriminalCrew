@@ -22,11 +22,11 @@ internal class LeverView: UIView {
     }
     
     private func setupView() {
-        let verticalStackView = UIViewController.createVerticalStackView()
+        let verticalStackView = ViewFactory.createVerticalStackView()
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let indicatorArray: [String] = ["Green Bulb Off", "Yellow Bulb Off", "Blue Bulb Off", "Red Bulb Off"]
-        let indicatorStackView = UIViewController.createHorizontalStackView()
+        let indicatorStackView = ViewFactory.createHorizontalStackView()
         indicatorStackView.translatesAutoresizingMaskIntoConstraints = false
         
         for indicator in indicatorArray {

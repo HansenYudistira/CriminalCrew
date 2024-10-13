@@ -7,15 +7,10 @@
 
 import UIKit
 
-protocol LeverPanelViewDelegate: AnyObject {
-    
-    func leverTapped(sender: LeverButton)
-    
-}
 
 internal class LeverPanelView: UIView {
     
-    weak var delegate: LeverPanelViewDelegate?
+    weak var delegate: ButtonTappedDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -30,11 +25,11 @@ internal class LeverPanelView: UIView {
         var leverImages: [String] = ["Blue Lever Off", "Green Lever Off", "Red Lever Off", "Yellow Lever Off"]
         leverImages.shuffle()
         
-        let leverGridStackView = UIViewController.createVerticalStackView()
+        let leverGridStackView = ViewFactory.createVerticalStackView()
         leverGridStackView.translatesAutoresizingMaskIntoConstraints = false
         
         for rowIndex in 0..<2 {
-            let rowStackView = UIViewController.createHorizontalStackView()
+            let rowStackView = ViewFactory.createHorizontalStackView()
             rowStackView.translatesAutoresizingMaskIntoConstraints = false
             
             for columnIndex in 0..<2 {
@@ -56,7 +51,7 @@ internal class LeverPanelView: UIView {
     }
     
     @objc private func leverTapped(sender: LeverButton) {
-        delegate?.leverTapped(sender: sender)
+        delegate?.buttonTapped(sender: sender)
     }
     
 }

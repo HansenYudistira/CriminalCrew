@@ -116,11 +116,4 @@ open class BaseGameViewController: UIViewController {
         ])
     }
     
-    public func addBackgroundImageView(_ imageName: String) -> UIImageView {
-        let backgroundImageView = UIImageView()
-        backgroundImageView.image = UIImage(named: imageName)
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        return backgroundImageView
-    }
-    
 }

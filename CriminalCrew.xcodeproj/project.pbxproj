@@ -31,7 +31,6 @@
 		A76130682CB50A4D00EB0FDA /* sNewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */; };
 		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
 		A761306C2CB681EE00EB0FDA /* cSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */; };
-		A761307B2CB7D1E000EB0FDA /* ViewController+createHorVer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307A2CB7D1E000EB0FDA /* ViewController+createHorVer.swift */; };
 		A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */; };
 		A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */; };
 		A76130812CB9038400EB0FDA /* cLeverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130802CB9038400EB0FDA /* cLeverIndicatorView.swift */; };
@@ -43,6 +42,10 @@
 		A76130902CBBDB5800EB0FDA /* cLeverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761308F2CBBDB5800EB0FDA /* cLeverButton.swift */; };
 		A76130922CBBE61E00EB0FDA /* eButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130912CBBE61E00EB0FDA /* eButtonState.swift */; };
 		A76130942CBBE82F00EB0FDA /* pToggleButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */; };
+		A76130962CBC021400EB0FDA /* cSwitchStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130952CBC021400EB0FDA /* cSwitchStackView.swift */; };
+		A76130982CBC02E000EB0FDA /* cSwitchIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130972CBC02E000EB0FDA /* cSwitchIndicatorView.swift */; };
+		A761309C2CBC06D900EB0FDA /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761309B2CBC06D900EB0FDA /* ViewFactory.swift */; };
+		A761309E2CBC107100EB0FDA /* pButtonTappedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761309D2CBC107100EB0FDA /* pButtonTappedDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +93,6 @@
 		A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sNewPrompt.swift; sourceTree = "<group>"; };
 		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
 		A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchButton.swift; sourceTree = "<group>"; };
-		A761307A2CB7D1E000EB0FDA /* ViewController+createHorVer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+createHorVer.swift"; sourceTree = "<group>"; };
 		A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cBaseGameViewController.swift; sourceTree = "<group>"; };
 		A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pGameContentProvider.swift; sourceTree = "<group>"; };
 		A76130802CB9038400EB0FDA /* cLeverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverIndicatorView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,10 @@
 		A761308F2CBBDB5800EB0FDA /* cLeverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cLeverButton.swift; sourceTree = "<group>"; };
 		A76130912CBBE61E00EB0FDA /* eButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eButtonState.swift; sourceTree = "<group>"; };
 		A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pToggleButtonState.swift; sourceTree = "<group>"; };
+		A76130952CBC021400EB0FDA /* cSwitchStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchStackView.swift; sourceTree = "<group>"; };
+		A76130972CBC02E000EB0FDA /* cSwitchIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchIndicatorView.swift; sourceTree = "<group>"; };
+		A761309B2CBC06D900EB0FDA /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		A761309D2CBC107100EB0FDA /* pButtonTappedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pButtonTappedDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				A70834E62CA6BE990066AEA4 /* UIView+Ext.swift */,
-				A761307A2CB7D1E000EB0FDA /* ViewController+createHorVer.swift */,
 				A74A09842CAE238C00456F30 /* Error+ext.swift */,
 			);
 			path = Helpers;
@@ -216,6 +221,7 @@
 			children = (
 				A76130912CBBE61E00EB0FDA /* eButtonState.swift */,
 				A76130932CBBE82F00EB0FDA /* pToggleButtonState.swift */,
+				A761309D2CBC107100EB0FDA /* pButtonTappedDelegate.swift */,
 				A76130892CBBCC4C00EB0FDA /* Switch */,
 				A76130882CBBB95200EB0FDA /* Lever */,
 				A70834F52CA6BFF80066AEA4 /* cSwitchGameViewController.swift */,
@@ -252,9 +258,9 @@
 		A70834FD2CA6C0B40066AEA4 /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				A761309A2CBC06C900EB0FDA /* BaseGameView */,
+				A76130992CBC069A00EB0FDA /* ViewFactory */,
 				A761308A2CBBD51900EB0FDA /* PromptStackView */,
-				A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */,
-				A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -433,6 +439,8 @@
 			isa = PBXGroup;
 			children = (
 				A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */,
+				A76130952CBC021400EB0FDA /* cSwitchStackView.swift */,
+				A76130972CBC02E000EB0FDA /* cSwitchIndicatorView.swift */,
 			);
 			path = Switch;
 			sourceTree = "<group>";
@@ -445,6 +453,23 @@
 				A761308B2CBBD52800EB0FDA /* cPromptStackView.swift */,
 			);
 			path = PromptStackView;
+			sourceTree = "<group>";
+		};
+		A76130992CBC069A00EB0FDA /* ViewFactory */ = {
+			isa = PBXGroup;
+			children = (
+				A761309B2CBC06D900EB0FDA /* ViewFactory.swift */,
+			);
+			path = ViewFactory;
+			sourceTree = "<group>";
+		};
+		A761309A2CBC06C900EB0FDA /* BaseGameView */ = {
+			isa = PBXGroup;
+			children = (
+				A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */,
+				A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */,
+			);
+			path = BaseGameView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -609,15 +634,18 @@
 				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
 				A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */,
 				A76130922CBBE61E00EB0FDA /* eButtonState.swift in Sources */,
-				A761307B2CB7D1E000EB0FDA /* ViewController+createHorVer.swift in Sources */,
 				A761308C2CBBD52800EB0FDA /* cPromptStackView.swift in Sources */,
 				A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */,
 				A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */,
 				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
 				A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */,
+				A76130982CBC02E000EB0FDA /* cSwitchIndicatorView.swift in Sources */,
+				A76130962CBC021400EB0FDA /* cSwitchStackView.swift in Sources */,
+				A761309E2CBC107100EB0FDA /* pButtonTappedDelegate.swift in Sources */,
 				A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */,
 				A70834F62CA6BFF80066AEA4 /* cSwitchGameViewController.swift in Sources */,
 				A76130812CB9038400EB0FDA /* cLeverIndicatorView.swift in Sources */,
+				A761309C2CBC06D900EB0FDA /* ViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

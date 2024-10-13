@@ -16,10 +16,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     
     private var leverView: LeverView?
     
-    private let gridStackView: UIStackView = createVerticalStackView()
-    private let switchContainerStackView: UIStackView = createVerticalStackView()
-    private let secondArrayStackView: UIStackView = createHorizontalStackView()
-    private let indicatorStackView: UIStackView = createHorizontalStackView()
+    private var switchStackView: SwitchStackView?
     
     private var promptStackView: PromptStackView?
     
@@ -33,8 +30,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     internal func createFirstPanelView() -> UIView {
         let firstPanelContainerView = UIView()
         
-        let portraitBackgroundImage = addBackgroundImageView("BG Portrait")
-        portraitBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        let portraitBackgroundImage = ViewFactory.addBackgroundImageView("BG Portrait")
         firstPanelContainerView.addSubview(portraitBackgroundImage)
         
         leverView = LeverView()
@@ -64,28 +60,26 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     internal func createSecondPanelView() -> UIView {
-        setupSwitchViewContent()
-        
         let secondPanelContainerView: UIView = UIView()
-        secondPanelContainerView.translatesAutoresizingMaskIntoConstraints = false
-        secondPanelContainerView.addSubview(switchContainerStackView)
         
-        switchContainerStackView.addArrangedSubview(secondArrayStackView)
-        switchContainerStackView.addArrangedSubview(gridStackView)
-        switchContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        let landscapeBackgroundImage = ViewFactory.addBackgroundImageView("BG Landscape")
         
-        NSLayoutConstraint.activate([
-            switchContainerStackView.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor, constant: 16),
-            switchContainerStackView.leadingAnchor.constraint(equalTo: secondPanelContainerView.leadingAnchor, constant: 16),
-            switchContainerStackView.trailingAnchor.constraint(equalTo: secondPanelContainerView.trailingAnchor, constant: -16),
-            switchContainerStackView.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor, constant: -16),
-            secondArrayStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.2),
-            gridStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.8)
-        ])
+        secondPanelContainerView.addSubview(landscapeBackgroundImage)
         
-        let landscapeBackgroundImage = addBackgroundImageView("BG Landscape")
+        switchStackView = SwitchStackView()
         
-        secondPanelContainerView.insertSubview(landscapeBackgroundImage, at: 0)
+        if let switchStackView = switchStackView {
+            switchStackView.translatesAutoresizingMaskIntoConstraints = false
+            switchStackView.delegate = self
+            secondPanelContainerView.addSubview(switchStackView)
+            
+            NSLayoutConstraint.activate([
+                switchStackView.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor, constant: 16),
+                switchStackView.leadingAnchor.constraint(equalTo: secondPanelContainerView.leadingAnchor, constant: 16),
+                switchStackView.trailingAnchor.constraint(equalTo: secondPanelContainerView.trailingAnchor, constant: -16),
+                switchStackView.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor, constant: -16)
+            ])
+        }
         
         NSLayoutConstraint.activate([
             landscapeBackgroundImage.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor),
@@ -109,69 +103,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         }
     }
     
-    private func setupSwitchViewContent() {
-        firstArray.shuffle()
-        secondArray.shuffle()
-        
-        let rightIndicatorView = UIImageView()
-        rightIndicatorView.contentMode = .scaleAspectFit
-        rightIndicatorView.image = UIImage(named: "Green Light Off")
-        let falseIndicatorView = UIImageView()
-        falseIndicatorView.contentMode = .scaleAspectFit
-        falseIndicatorView.image = UIImage(named: "Red Light Off")
-        
-        indicatorStackView.addArrangedSubview(rightIndicatorView)
-        indicatorStackView.addArrangedSubview(falseIndicatorView)
-        
-        secondArrayStackView.addArrangedSubview(indicatorStackView)
-
-        for column in 0..<secondArray.count {
-            let label = SwitchGameViewController.createLabel(text: secondArray[column])
-            secondArrayStackView.addArrangedSubview(label)
-        }
-
-        for row in 0..<firstArray.count {
-            let rowContainerStackView = UIStackView()
-            rowContainerStackView.axis = .horizontal
-            rowContainerStackView.spacing = 8
-            rowContainerStackView.alignment = .center
-
-            let labelBox = UIView()
-            let label = SwitchGameViewController.createLabel(text: firstArray[row])
-            label.adjustsFontSizeToFitWidth = true
-            labelBox.addSubview(label)
-            
-            rowContainerStackView.addArrangedSubview(labelBox)
-
-            let switchStackView = SwitchGameViewController.createHorizontalStackView()
-
-            for column in 0..<secondArray.count {
-                let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
-
-                button.addTarget(self, action: #selector(toggleButton(_:)), for: .touchUpInside)
-
-                switchStackView.addArrangedSubview(button)
-            }
-            
-            rowContainerStackView.addArrangedSubview(switchStackView)
-            
-            label.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                label.leadingAnchor.constraint(equalTo: labelBox.leadingAnchor),
-                label.trailingAnchor.constraint(equalTo: labelBox.trailingAnchor),
-                label.topAnchor.constraint(equalTo: labelBox.topAnchor),
-                label.bottomAnchor.constraint(equalTo: labelBox.bottomAnchor)
-            ])
-            
-            NSLayoutConstraint.activate([
-                labelBox.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
-                switchStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
-            ])
-            gridStackView.addArrangedSubview(rowContainerStackView)
-        }
-    }
-    
-    override func setupGameContent() {
+    override open func setupGameContent() {
         contentProvider = self
         
         let repository = MultipeerTaskRepository()
@@ -207,21 +139,17 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
 
     private func showTaskAlert(isSuccess: Bool) {
-        if let indicatorStackView = secondArrayStackView.arrangedSubviews.compactMap({ $0 as? UIStackView }).first {
+        if let switchStackView = switchStackView {
             if isSuccess {
-                if let rightIndicatorView = indicatorStackView.arrangedSubviews[0] as? UIImageView {
-                    rightIndicatorView.image = UIImage(named: "Green Light On")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        rightIndicatorView.image = UIImage(named: "Green Light Off")
-                    }
+                switchStackView.correctIndicatorView.image = UIImage(named: "Green Light On")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    switchStackView.correctIndicatorView.image = UIImage(named: "Green Light Off")
                 }
             } else {
-                if let falseIndicatorView = indicatorStackView.arrangedSubviews[1] as? UIImageView {
-                    falseIndicatorView.image = UIImage(named: "Red Light On")
+                switchStackView.falseIndicatorView.image = UIImage(named: "Red Light On")
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        falseIndicatorView.image = UIImage(named: "Red Light Off")
-                    }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    switchStackView.falseIndicatorView.image = UIImage(named: "Red Light Off")
                 }
             }
         }
@@ -235,18 +163,26 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     
 }
 
-extension SwitchGameViewController: LeverPanelViewDelegate {
+extension SwitchGameViewController: ButtonTappedDelegate {
     
-    internal func leverTapped(sender: LeverButton) {
-        if let label = sender.accessibilityLabel {
-            didPressedButton.send(label)
+    internal func buttonTapped(sender: UIButton) {
+        if let sender = sender as? LeverButton {
+            if let label = sender.accessibilityLabel {
+                didPressedButton.send(label)
+            }
+            
+            if let indicator = leverView?.leverIndicatorView.first(where: { $0.bulbColor == sender.leverColor }) {
+                indicator.toggleState()
+            }
+            
+            sender.toggleButtonState()
+        } else if let sender = sender as? SwitchButton {
+            if let label = sender.accessibilityLabel {
+                didPressedButton.send(label)
+            }
+            sender.toggleButtonState()
         }
         
-        if let indicator = leverView?.leverIndicatorView.first(where: { $0.bulbColor == sender.leverColor }) {
-            indicator.toggleState()
-        }
-        
-        sender.toggleButtonState()
     }
     
 }
