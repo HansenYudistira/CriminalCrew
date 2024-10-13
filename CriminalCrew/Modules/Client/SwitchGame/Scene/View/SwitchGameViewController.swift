@@ -16,14 +16,15 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     
     private let leverStackView: UIStackView = createVerticalStackView()
     private let leverIndicatorStackView: UIStackView = createHorizontalStackView()
+    
     private let gridStackView: UIStackView = createVerticalStackView()
     private let switchContainerStackView: UIStackView = createVerticalStackView()
     private let secondArrayStackView: UIStackView = createHorizontalStackView()
     private let indicatorStackView: UIStackView = createHorizontalStackView()
-    private let promptStackView: UIStackView = createHorizontalStackView()
     
+    private let promptStackView: UIStackView = createHorizontalStackView()
+    private var promptView: PromptView?
     private var timeLabel: UILabel = createLabel(text: "20")
-    private var promptLabel: UILabel = createLabel(text: "Quantum Encryption, Pseudo AIIDS")
     
     private var notifyCoordinatorButton: UIButton = UIButton(type: .system)
     private var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
@@ -74,7 +75,9 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
             switchContainerStackView.topAnchor.constraint(equalTo: secondPanelContainerView.topAnchor, constant: 16),
             switchContainerStackView.leadingAnchor.constraint(equalTo: secondPanelContainerView.leadingAnchor, constant: 16),
             switchContainerStackView.trailingAnchor.constraint(equalTo: secondPanelContainerView.trailingAnchor, constant: -16),
-            switchContainerStackView.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor, constant: -16)
+            switchContainerStackView.bottomAnchor.constraint(equalTo: secondPanelContainerView.bottomAnchor, constant: -16),
+            secondArrayStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.2),
+            gridStackView.heightAnchor.constraint(equalTo: switchContainerStackView.heightAnchor, multiplier: 0.8)
         ])
         setupSwitchViewContent()
         
@@ -93,8 +96,20 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     internal func createPromptView() -> UIView {
-        setupPromptView()
-        return promptStackView
+        promptView = PromptView(label: "Initial Task")
+        
+        if let promptView = promptView {
+            promptView.translatesAutoresizingMaskIntoConstraints = false
+            promptStackView.addArrangedSubview(promptView)
+            promptStackView.addArrangedSubview(timeLabel)
+            NSLayoutConstraint.activate([
+                promptView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.9),
+                timeLabel.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
+            ])
+            return promptStackView
+        }
+        
+        return UIView()
     }
     
     private func setupLeverViewContent() {
@@ -138,10 +153,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
             
             rowContainerStackView.addArrangedSubview(labelBox)
 
-            let switchStackView = UIStackView()
-            switchStackView.axis = .horizontal
-            switchStackView.spacing = 8
-            switchStackView.distribution = .fillEqually
+            let switchStackView = SwitchGameViewController.createHorizontalStackView()
 
             for column in 0..<secondArray.count {
                 let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
@@ -167,35 +179,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
             ])
             gridStackView.addArrangedSubview(rowContainerStackView)
         }
-    }
-    
-    private func setupPromptView() {
-        let promptBackground = UIImageView(image: UIImage(named: "Prompt"))
-        promptBackground.contentMode = .scaleToFill
-        
-        let promptContainerView = UIView()
-        promptContainerView.addSubview(promptBackground)
-        promptContainerView.addSubview(promptLabel)
-        
-        promptStackView.addArrangedSubview(promptContainerView)
-        promptStackView.addArrangedSubview(timeLabel)
-        
-        promptBackground.translatesAutoresizingMaskIntoConstraints = false
-        promptLabel.translatesAutoresizingMaskIntoConstraints = false
-        promptContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            promptContainerView.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.9),
-            timeLabel.widthAnchor.constraint(equalTo: promptStackView.widthAnchor, multiplier: 0.1),
-            
-            promptBackground.topAnchor.constraint(equalTo: promptContainerView.topAnchor, constant: 8),
-            promptBackground.leadingAnchor.constraint(equalTo: promptContainerView.leadingAnchor),
-            promptBackground.trailingAnchor.constraint(equalTo: promptContainerView.trailingAnchor, constant: -8),
-            promptBackground.bottomAnchor.constraint(equalTo: promptContainerView.bottomAnchor, constant: -8),
-            
-            promptLabel.centerXAnchor.constraint(equalTo: promptContainerView.centerXAnchor),
-            promptLabel.centerYAnchor.constraint(equalTo: promptContainerView.centerYAnchor)
-        ])
     }
     
     override func setupGameContent() {

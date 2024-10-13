@@ -35,6 +35,7 @@
 		A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */; };
 		A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */; };
 		A76130812CB9038400EB0FDA /* LeverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */; };
+		A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130822CBB9E8D00EB0FDA /* cPromptView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cBaseGameViewController.swift; sourceTree = "<group>"; };
 		A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pGameContentProvider.swift; sourceTree = "<group>"; };
 		A76130802CB9038400EB0FDA /* LeverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeverIndicatorView.swift; sourceTree = "<group>"; };
+		A76130822CBB9E8D00EB0FDA /* cPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cPromptView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			children = (
 				A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */,
 				A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */,
+				A76130822CBB9E8D00EB0FDA /* cPromptView.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */,
 				A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */,
 				A708351E2CAA83940066AEA4 /* EmptyResponse.swift in Sources */,
+				A76130832CBB9E8D00EB0FDA /* cPromptView.swift in Sources */,
 				A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */,
 				A70834F62CA6BFF80066AEA4 /* SwitchGameViewController.swift in Sources */,
 				A76130812CB9038400EB0FDA /* LeverIndicatorView.swift in Sources */,

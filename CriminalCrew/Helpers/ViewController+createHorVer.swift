@@ -12,7 +12,7 @@ extension UIViewController {
     public static func createVerticalStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 8
         stackView.distribution = .fillEqually
         return stackView
     }
@@ -20,7 +20,7 @@ extension UIViewController {
     public static func createHorizontalStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = 8
         stackView.distribution = .fillEqually
         return stackView
     }

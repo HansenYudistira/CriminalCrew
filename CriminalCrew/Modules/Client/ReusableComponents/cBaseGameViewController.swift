@@ -15,20 +15,9 @@ open class BaseGameViewController: UIViewController {
     private let secondPanelView = UIView()
     private let promptView = UIView()
     
-    public let mainStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    public let mainStackView: UIStackView = UIStackView()
     
-    public let rightStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+    public let rightStackView: UIStackView = UIStackView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -62,6 +51,9 @@ open class BaseGameViewController: UIViewController {
     }
     
     private func setupView() {
+        mainStackView.axis = .horizontal
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        rightStackView.axis = .vertical
         view.backgroundColor = .systemBackground
         view.addSubview(mainStackView)
         
@@ -87,7 +79,7 @@ open class BaseGameViewController: UIViewController {
     }
     
     open func setupGameContent() {
-        // for subclass to override
+        /// for subclass to override
     }
     
     public func addContentToFirstPanelView(_ view: UIView) {
