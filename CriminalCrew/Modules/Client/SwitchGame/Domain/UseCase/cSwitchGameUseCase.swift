@@ -34,6 +34,7 @@ internal class SwitchGameUseCase {
                 "instanciatedOn": newTask.instanciatedOn
             ]
         )
+        
         taskRepository.sendTaskDataToPeer(taskDone: updatedTaskDone) { isSuccess in
             completion(isSuccess)
         }

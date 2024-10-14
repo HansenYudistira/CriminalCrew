@@ -34,11 +34,21 @@ internal class SwitchStackView: UIStackView {
         secondArray.shuffle()
         
         let indicatorStackView = ViewFactory.createHorizontalStackView()
+        let indicatorView = UIView()
         indicatorStackView.addArrangedSubview(correctIndicatorView)
         indicatorStackView.addArrangedSubview(falseIndicatorView)
+        indicatorStackView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.addSubview(indicatorStackView)
+        
+        NSLayoutConstraint.activate([
+            indicatorStackView.widthAnchor.constraint(equalTo: indicatorView.widthAnchor, multiplier: 0.7),
+            indicatorStackView.heightAnchor.constraint(equalTo: indicatorView.heightAnchor, multiplier: 0.7),
+            indicatorStackView.centerXAnchor.constraint(equalTo: indicatorView.centerXAnchor),
+            indicatorStackView.centerYAnchor.constraint(equalTo: indicatorView.centerYAnchor)
+        ])
         
         let topLabelStackView = ViewFactory.createHorizontalStackView()
-        topLabelStackView.addArrangedSubview(indicatorStackView)
+        topLabelStackView.addArrangedSubview(indicatorView  )
         
         for column in 0..<secondArray.count {
             let labelView = LabelView(text: secondArray[column])
@@ -64,6 +74,8 @@ internal class SwitchStackView: UIStackView {
             rowContainerStackView.addArrangedSubview(leftLabelBoxView)
 
             let switchStackView = ViewFactory.createHorizontalStackView()
+            switchStackView.alignment = .center
+            switchStackView.spacing = 0
             for column in 0..<secondArray.count {
                 let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
                 button.addTarget(self, action: #selector(switchTapped(_:)), for: .touchUpInside)
