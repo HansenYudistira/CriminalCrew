@@ -34,57 +34,64 @@ internal class SwitchStackView: UIStackView {
         secondArray.shuffle()
         
         let indicatorStackView = ViewFactory.createHorizontalStackView()
-        
         indicatorStackView.addArrangedSubview(correctIndicatorView)
         indicatorStackView.addArrangedSubview(falseIndicatorView)
         
-        let secondArrayStackView = ViewFactory.createHorizontalStackView()
-        secondArrayStackView.addArrangedSubview(indicatorStackView)
+        let topLabelStackView = ViewFactory.createHorizontalStackView()
+        topLabelStackView.addArrangedSubview(indicatorStackView)
         
-        addArrangedSubview(secondArrayStackView)
-
         for column in 0..<secondArray.count {
             let labelView = LabelView(text: secondArray[column])
-            secondArrayStackView.addArrangedSubview(labelView)
+            topLabelStackView.addArrangedSubview(labelView)
         }
         
+        addArrangedSubview(topLabelStackView)
+        
         let gridStackView = ViewFactory.createVerticalStackView()
-
+        
         for row in 0..<firstArray.count {
             let rowContainerStackView = ViewFactory.createHorizontalStackView()
 
-            let labelView = LabelView(text: firstArray[row])
+            let leftLabelView = LabelView(text: firstArray[row])
+            leftLabelView.translatesAutoresizingMaskIntoConstraints = false
+            let leftLabelBoxView = UIView()
+            leftLabelBoxView.addSubview(leftLabelView)
+            NSLayoutConstraint.activate([
+                leftLabelView.heightAnchor.constraint(equalTo: leftLabelBoxView.heightAnchor, multiplier: 0.5),
+                leftLabelView.centerYAnchor.constraint(equalTo: leftLabelBoxView.centerYAnchor),
+            ])
             
-            rowContainerStackView.addArrangedSubview(labelView)
+            rowContainerStackView.addArrangedSubview(leftLabelBoxView)
 
             let switchStackView = ViewFactory.createHorizontalStackView()
-
             for column in 0..<secondArray.count {
                 let button = SwitchButton(firstLabel: firstArray[row], secondLabel: secondArray[column])
                 button.addTarget(self, action: #selector(switchTapped(_:)), for: .touchUpInside)
-
                 switchStackView.addArrangedSubview(button)
             }
-            
             rowContainerStackView.addArrangedSubview(switchStackView)
+            gridStackView.addArrangedSubview(rowContainerStackView)
             
             NSLayoutConstraint.activate([
-                labelView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
+                leftLabelView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
                 switchStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
             ])
-            gridStackView.addArrangedSubview(rowContainerStackView)
         }
         
         addArrangedSubview(gridStackView)
         
         NSLayoutConstraint.activate([
-            secondArrayStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
+            topLabelStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             gridStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8)
         ])
     }
     
     @objc private func switchTapped(_ sender: SwitchButton) {
-        delegate?.buttonTapped(sender: sender)
+        if let delegate = delegate {
+            delegate.buttonTapped(sender: sender)
+        } else {
+            print("Delegate is nil!")
+        }
     }
     
 }
