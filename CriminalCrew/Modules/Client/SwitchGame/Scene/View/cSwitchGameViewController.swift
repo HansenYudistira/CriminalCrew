@@ -94,8 +94,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     private func bindViewModel() {
         guard let viewModel = viewModel else { return }
         
-        let input = SwitchGameViewModel.Input(didPressedButton: didPressedButton)
-        viewModel.bind(input)
+        viewModel.bind()
         
         viewModel.taskCompletionStatus
             .receive(on: DispatchQueue.main)
@@ -145,8 +144,8 @@ extension SwitchGameViewController: ButtonTappedDelegate {
     
     internal func buttonTapped(sender: UIButton) {
         if let sender = sender as? LeverButton {
-            if let label = sender.accessibilityLabel {
-                didPressedButton.send(label)
+            if let label = sender.accessibilityLabel, let viewModel = viewModel {
+                viewModel.input.didPressedButton.send(label)
             }
             
             if let indicator = leverView?.leverIndicatorView.first(where: { $0.bulbColor == sender.leverColor }) {
@@ -155,8 +154,8 @@ extension SwitchGameViewController: ButtonTappedDelegate {
             
             sender.toggleButtonState()
         } else if let sender = sender as? SwitchButton {
-            if let label = sender.accessibilityLabel {
-                didPressedButton.send(label)
+            if let label = sender.accessibilityLabel, let viewModel = viewModel {
+                viewModel.input.didPressedButton.send(label)
             }
             sender.toggleButtonState()
         }

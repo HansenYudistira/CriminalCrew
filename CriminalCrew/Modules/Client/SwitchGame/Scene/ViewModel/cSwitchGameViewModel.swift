@@ -13,18 +13,20 @@ internal class SwitchGameViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let switchGameUseCase: SwitchGameUseCase
     
-    var pressedButton: [String] = []
-    var taskCompletionStatus = PassthroughSubject<Bool, Never>()
+    private var pressedButton: [String] = []
+    internal var taskCompletionStatus = PassthroughSubject<Bool, Never>()
     
     init(switchGameUseCase: SwitchGameUseCase) {
         self.switchGameUseCase = switchGameUseCase
     }
     
     internal struct Input {
-        let didPressedButton: PassthroughSubject<String, Never>
+        let didPressedButton = PassthroughSubject<String, Never>()
     }
     
-    internal func bind(_ input: Input) {
+    internal let input = Input()
+    
+    internal func bind() {
         input.didPressedButton
             .receive(on: DispatchQueue.main)
             .sink { [weak self] accessibilityLabel in
