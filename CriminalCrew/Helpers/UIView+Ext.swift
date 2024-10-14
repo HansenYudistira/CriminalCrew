@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor? = nil,
+    internal func anchor(top: NSLayoutYAxisAnchor? = nil,
                 leading: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
                 trailing: NSLayoutXAxisAnchor? = nil,
@@ -45,13 +45,13 @@ extension UIView {
         }
     }
     
-    func center(inView view: UIView, yConstant: CGFloat? = 0) {
+    internal func center(inView view: UIView, yConstant: CGFloat? = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: yConstant!).isActive = true
     }
     
-    func centerX(inView view: UIView, topAnchor: NSLayoutYAxisAnchor? = nil, paddingTop: CGFloat? = 0) {
+    internal func centerX(inView view: UIView, topAnchor: NSLayoutYAxisAnchor? = nil, paddingTop: CGFloat? = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -60,7 +60,7 @@ extension UIView {
         }
     }
     
-    func centerY(inView view: UIView, leadingAnchor: NSLayoutXAxisAnchor? = nil,
+    internal func centerY(inView view: UIView, leadingAnchor: NSLayoutXAxisAnchor? = nil,
                  paddingLeading: CGFloat = 0, constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
@@ -70,23 +70,23 @@ extension UIView {
         }
     }
     
-    func setSize(height: CGFloat, width: CGFloat) {
+    internal func setSize(height: CGFloat, width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         widthAnchor.constraint(equalToConstant: width).isActive = true
     }
     
-    func setHeight(_ height: CGFloat) {
+    internal func setHeight(_ height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     
-    func setWidth(_ width: CGFloat) {
+    internal func setWidth(_ width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
     }
     
-    func fillSuperView() {
+    internal func fillSuperView() {
         translatesAutoresizingMaskIntoConstraints = false
         guard let view = superview else { return }
         anchor(top: view.topAnchor,
@@ -95,7 +95,7 @@ extension UIView {
                trailing: view.trailingAnchor)
     }
     
-    func addSubViews(_ views: UIView...) {
+    internal func addSubViews(_ views: UIView...) {
         views.forEach {
             self.addSubview($0)
         }

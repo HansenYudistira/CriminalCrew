@@ -7,14 +7,14 @@
 
 import UIKit
 
-internal class TimeView: UIImageView {
+open class TimeView: UIImageView {
     
     init () {
         super.init(frame: .zero)
         setupView()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

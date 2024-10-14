@@ -44,8 +44,8 @@ internal class SwitchStackView: UIStackView {
         addArrangedSubview(secondArrayStackView)
 
         for column in 0..<secondArray.count {
-            let label = ViewFactory.createLabel(text: secondArray[column])
-            secondArrayStackView.addArrangedSubview(label)
+            let labelView = LabelView(text: secondArray[column])
+            secondArrayStackView.addArrangedSubview(labelView)
         }
         
         let gridStackView = ViewFactory.createVerticalStackView()
@@ -53,20 +53,9 @@ internal class SwitchStackView: UIStackView {
         for row in 0..<firstArray.count {
             let rowContainerStackView = ViewFactory.createHorizontalStackView()
 
-            let labelBox = UIView()
-            let label = ViewFactory.createLabel(text: firstArray[row])
-            label.adjustsFontSizeToFitWidth = true
-            labelBox.addSubview(label)
+            let labelView = LabelView(text: firstArray[row])
             
-            rowContainerStackView.addArrangedSubview(labelBox)
-            
-            label.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                label.leadingAnchor.constraint(equalTo: labelBox.leadingAnchor),
-                label.trailingAnchor.constraint(equalTo: labelBox.trailingAnchor),
-                label.topAnchor.constraint(equalTo: labelBox.topAnchor),
-                label.bottomAnchor.constraint(equalTo: labelBox.bottomAnchor)
-            ])
+            rowContainerStackView.addArrangedSubview(labelView)
 
             let switchStackView = ViewFactory.createHorizontalStackView()
 
@@ -80,7 +69,7 @@ internal class SwitchStackView: UIStackView {
             rowContainerStackView.addArrangedSubview(switchStackView)
             
             NSLayoutConstraint.activate([
-                labelBox.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
+                labelView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.2),
                 switchStackView.widthAnchor.constraint(equalTo: rowContainerStackView.widthAnchor, multiplier: 0.8)
             ])
             gridStackView.addArrangedSubview(rowContainerStackView)

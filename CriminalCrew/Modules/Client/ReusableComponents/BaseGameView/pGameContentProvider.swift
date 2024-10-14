@@ -6,10 +6,9 @@
 //
 import UIKit
 
-protocol GameContentProvider {
+public protocol GameContentProvider {
     
     func createFirstPanelView() -> UIView
     func createSecondPanelView() -> UIView
-    func createPromptView() -> UIView
     
 }

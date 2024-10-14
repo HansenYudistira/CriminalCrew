@@ -7,17 +7,17 @@
 
 import UIKit
 
-internal class PromptStackView: UIStackView {
+open class PromptStackView: UIStackView {
     
-    internal var promptView: PromptView = PromptView(label: "Initial Prompt")
-    internal var timeView: TimeView = TimeView()
+    public var promptView: PromptView = PromptView(label: "Initial Prompt")
+    public var timeView: TimeView = TimeView()
     
-    internal init() {
+    public init() {
         super.init(frame: .zero)
         setupStackView()
     }
     
-    required init(coder: NSCoder) {
+    required public init(coder: NSCoder) {
         super.init(frame: .zero)
         setupStackView()
     }

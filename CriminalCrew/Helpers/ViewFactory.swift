@@ -28,6 +28,8 @@ internal struct ViewFactory {
     internal static func createLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
+        label.font = UIFont(name: "RobotoMono-Medium", size: 17)
+        label.textColor = UIColor(named: "BlackText")
         label.textAlignment = .center
         return label
     }

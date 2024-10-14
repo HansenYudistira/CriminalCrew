@@ -9,14 +9,15 @@ import UIKit
 
 open class BaseGameViewController: UIViewController {
     
-    internal var contentProvider: GameContentProvider?
+    public var contentProvider: GameContentProvider?
     
     private let firstPanelView = UIView()
     private let secondPanelView = UIView()
-    private let promptView = UIView()
+    private var promptView = UIView()
     
     public let mainStackView: UIStackView = UIStackView()
     public let rightStackView: UIStackView = UIStackView()
+    public var promptStackView: PromptStackView?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -35,7 +36,6 @@ open class BaseGameViewController: UIViewController {
         if let contentProvider = contentProvider {
             addContentToFirstPanelView(contentProvider.createFirstPanelView())
             addContentToSecondPanelView(contentProvider.createSecondPanelView())
-            addContentToPromptView(contentProvider.createPromptView())
         }
         
     }
@@ -65,6 +65,8 @@ open class BaseGameViewController: UIViewController {
         
         mainStackView.addArrangedSubview(firstPanelView)
         mainStackView.addArrangedSubview(rightStackView)
+        
+        addContentToPromptView()
         
         rightStackView.addArrangedSubview(promptView)
         rightStackView.addArrangedSubview(secondPanelView)
@@ -105,7 +107,9 @@ open class BaseGameViewController: UIViewController {
         ])
     }
     
-    public func addContentToPromptView(_ view: UIView) {
+    private func addContentToPromptView() {
+        let view = createPromptView()
+        
         promptView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -114,6 +118,18 @@ open class BaseGameViewController: UIViewController {
             view.leadingAnchor.constraint(equalTo: promptView.leadingAnchor, constant: 8),
             view.trailingAnchor.constraint(equalTo: promptView.trailingAnchor, constant: -8)
         ])
+    }
+    
+    private func createPromptView() -> UIStackView {
+        promptStackView = PromptStackView()
+        
+        if let promptStackView = promptStackView {
+            promptStackView.promptView.promptLabel.text = "Red, Quantum Encryption, Pseudo AIIDS"
+            return promptStackView
+        } else {
+            print("Prompt View failed to load!!!")
+            return UIStackView()
+        }
     }
     
 }

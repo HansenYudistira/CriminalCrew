@@ -15,15 +15,7 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     internal var coordinator: RootCoordinator?
     
     private var leverView: LeverView?
-    
     private var switchStackView: SwitchStackView?
-    
-    private var promptStackView: PromptStackView?
-    
-    private var notifyCoordinatorButton: UIButton = UIButton(type: .system)
-    private var colorArray : [String] = ["Red", "Blue", "Yellow", "Green"]
-    private var firstArray : [String] = ["Quantum", "Pseudo"]
-    private var secondArray : [String] = ["Encryption", "AIIDS", "Cryptography", "Protocol"]
     
     private let didPressedButton: PassthroughSubject = PassthroughSubject<String, Never>()
     
@@ -38,7 +30,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         if let leverView = leverView {
             firstPanelContainerView.addSubview(leverView)
             leverView.translatesAutoresizingMaskIntoConstraints = false
-            
             leverView.leverPanelView?.delegate = self
             
             NSLayoutConstraint.activate([
@@ -63,7 +54,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         let secondPanelContainerView: UIView = UIView()
         
         let landscapeBackgroundImage = ViewFactory.addBackgroundImageView("BG Landscape")
-        
         secondPanelContainerView.addSubview(landscapeBackgroundImage)
         
         switchStackView = SwitchStackView()
@@ -89,18 +79,6 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
         ])
         
         return secondPanelContainerView
-    }
-    
-    internal func createPromptView() -> UIView {
-        promptStackView = PromptStackView()
-        
-        if let promptStackView = promptStackView {
-            promptStackView.promptView.promptLabel.text = "Red, Quantum Encryption, Pseudo AIIDS"
-            return promptStackView
-        } else {
-            print("Prompt View failed to load!!!")
-            return UIView()
-        }
     }
     
     override open func setupGameContent() {
