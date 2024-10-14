@@ -10,7 +10,7 @@ import UIKit
 class RootCoordinator {
     private let navigationController: UINavigationController
     private let repository: TaskRepository
-    private var switchGameViewController: SwitchGameViewController?
+    private var switchGameViewController: ClockGameViewController?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,7 +21,7 @@ class RootCoordinator {
         let useCase = SwitchGameUseCase(taskRepository: repository)
         let viewModel = SwitchGameViewModel(switchGameUseCase: useCase)
 
-        let switchGameVC = SwitchGameViewController(nibName: "SwitchGameViewController", bundle: nil)
+        let switchGameVC = ClockGameViewController(nibName: "ClockGameViewController", bundle: nil)
         switchGameVC.viewModel = viewModel
         switchGameVC.coordinator = self
         

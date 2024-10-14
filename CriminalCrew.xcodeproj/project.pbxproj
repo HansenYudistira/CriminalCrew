@@ -63,6 +63,7 @@
 		A76130C02CBC1C4D00EB0FDA /* RobotoMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76130A22CBC1C4D00EB0FDA /* RobotoMono-BoldItalic.ttf */; };
 		A76130C12CBC1C4D00EB0FDA /* RobotoMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76130A12CBC1C4D00EB0FDA /* RobotoMono-Bold.ttf */; };
 		A76130C22CBC1C4D00EB0FDA /* RobotoMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76130AC2CBC1C4D00EB0FDA /* RobotoMono-SemiBold.ttf */; };
+		A76130C52CBD008700EB0FDA /* cClockGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130C42CBD008700EB0FDA /* cClockGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		A76130AE2CBC1C4D00EB0FDA /* RobotoMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Thin.ttf"; sourceTree = "<group>"; };
 		A76130AF2CBC1C4D00EB0FDA /* RobotoMono-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-ThinItalic.ttf"; sourceTree = "<group>"; };
 		A76130B02CBC1C4D00EB0FDA /* RobotoMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		A76130C42CBD008700EB0FDA /* cClockGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cClockGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +439,7 @@
 		A708351F2CAA96180066AEA4 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				A76130C32CBD007B00EB0FDA /* ClockGame */,
 				A70835212CAA9E9F0066AEA4 /* MainMenu */,
 				A70834FD2CA6C0B40066AEA4 /* ReusableComponents */,
 				A70834F42CA6BFE20066AEA4 /* SwitchGame */,
@@ -529,6 +532,14 @@
 				A76130B12CBC1C4D00EB0FDA /* static */,
 			);
 			path = Roboto_Mono;
+			sourceTree = "<group>";
+		};
+		A76130C32CBD007B00EB0FDA /* ClockGame */ = {
+			isa = PBXGroup;
+			children = (
+				A76130C42CBD008700EB0FDA /* cClockGameViewController.swift */,
+			);
+			path = ClockGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -700,6 +711,7 @@
 				A70834ED2CA6BE990066AEA4 /* AppDelegate.swift in Sources */,
 				A708350C2CA6C1780066AEA4 /* cSwitchGameUseCase.swift in Sources */,
 				A761306C2CB681EE00EB0FDA /* cSwitchButton.swift in Sources */,
+				A76130C52CBD008700EB0FDA /* cClockGameViewController.swift in Sources */,
 				A70834EE2CA6BE990066AEA4 /* SceneDelegate.swift in Sources */,
 				A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */,
 				A70835282CAD1E3B0066AEA4 /* sNewTask.swift in Sources */,
