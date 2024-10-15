@@ -15,7 +15,7 @@
 		A70835002CA6C0DE0066AEA4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */; };
 		A708350C2CA6C1780066AEA4 /* cSwitchGameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350B2CA6C1780066AEA4 /* cSwitchGameUseCase.swift */; };
 		A70835102CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708350F2CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift */; };
-		A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */; };
+		A70835122CA6C5710066AEA4 /* cMultipeerTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835112CA6C5710066AEA4 /* cMultipeerTaskRepository.swift */; };
 		A70835152CA6C96B0066AEA4 /* CriminalCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */; };
 		A70835192CA6C96D0066AEA4 /* CriminalCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */; };
 		A708351A2CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */; };
@@ -23,13 +23,13 @@
 		A70835242CAAB01C0066AEA4 /* GamePantry in Frameworks */ = {isa = PBXBuildFile; productRef = A70835232CAAB01C0066AEA4 /* GamePantry */; };
 		A70835262CAD1C780066AEA4 /* sTaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835252CAD1C780066AEA4 /* sTaskDone.swift */; };
 		A70835282CAD1E3B0066AEA4 /* sNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835272CAD1E3B0066AEA4 /* sNewTask.swift */; };
-		A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835292CAD22F10066AEA4 /* NetworkManager.swift */; };
+		A708352A2CAD22F10066AEA4 /* cNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70835292CAD22F10066AEA4 /* cNetworkManager.swift */; };
 		A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A097E2CAE232D00456F30 /* NetworkError.swift */; };
 		A74A09812CAE236000456F30 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09802CAE236000456F30 /* BaseResponse.swift */; };
 		A74A09832CAE236F00456F30 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09822CAE236F00456F30 /* ResponseError.swift */; };
 		A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A09842CAE238C00456F30 /* Error+ext.swift */; };
 		A76130682CB50A4D00EB0FDA /* sNewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */; };
-		A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */; };
+		A761306A2CB518F600EB0FDA /* sJoinVerdictEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76130692CB518F600EB0FDA /* sJoinVerdictEvent.swift */; };
 		A761306C2CB681EE00EB0FDA /* cSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */; };
 		A761307D2CB80D1D00EB0FDA /* cBaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */; };
 		A761307F2CB81C4000EB0FDA /* pGameContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */; };
@@ -96,20 +96,20 @@
 		A70834FF2CA6C0DE0066AEA4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		A708350B2CA6C1780066AEA4 /* cSwitchGameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchGameUseCase.swift; sourceTree = "<group>"; };
 		A708350F2CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchGameViewModel.swift; sourceTree = "<group>"; };
-		A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerTaskRepository.swift; sourceTree = "<group>"; };
+		A70835112CA6C5710066AEA4 /* cMultipeerTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cMultipeerTaskRepository.swift; sourceTree = "<group>"; };
 		A70835132CA6C96B0066AEA4 /* CriminalCrewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewTests.swift; sourceTree = "<group>"; };
 		A70835162CA6C96D0066AEA4 /* CriminalCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITests.swift; sourceTree = "<group>"; };
 		A70835172CA6C96D0066AEA4 /* CriminalCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A708351D2CAA83940066AEA4 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		A70835252CAD1C780066AEA4 /* sTaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sTaskDone.swift; sourceTree = "<group>"; };
 		A70835272CAD1E3B0066AEA4 /* sNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sNewTask.swift; sourceTree = "<group>"; };
-		A70835292CAD22F10066AEA4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A70835292CAD22F10066AEA4 /* cNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cNetworkManager.swift; sourceTree = "<group>"; };
 		A74A097E2CAE232D00456F30 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A74A09802CAE236000456F30 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		A74A09822CAE236F00456F30 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		A74A09842CAE238C00456F30 /* Error+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+ext.swift"; sourceTree = "<group>"; };
 		A76130672CB50A4D00EB0FDA /* sNewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sNewPrompt.swift; sourceTree = "<group>"; };
-		A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVerdictEvent.swift; sourceTree = "<group>"; };
+		A76130692CB518F600EB0FDA /* sJoinVerdictEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sJoinVerdictEvent.swift; sourceTree = "<group>"; };
 		A761306B2CB681EE00EB0FDA /* cSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSwitchButton.swift; sourceTree = "<group>"; };
 		A761307C2CB80D1D00EB0FDA /* cBaseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cBaseGameViewController.swift; sourceTree = "<group>"; };
 		A761307E2CB81C4000EB0FDA /* pGameContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pGameContentProvider.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 		A70835042CA6C1150066AEA4 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				A70835112CA6C5710066AEA4 /* MultipeerTaskRepository.swift */,
+				A70835112CA6C5710066AEA4 /* cMultipeerTaskRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -356,8 +356,8 @@
 		A70835062CA6C12C0066AEA4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				A70835292CAD22F10066AEA4 /* NetworkManager.swift */,
-				A76130692CB518F600EB0FDA /* JoinVerdictEvent.swift */,
+				A70835292CAD22F10066AEA4 /* cNetworkManager.swift */,
+				A76130692CB518F600EB0FDA /* sJoinVerdictEvent.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 				A74A09852CAE238C00456F30 /* Error+ext.swift in Sources */,
 				A76130942CBBE82F00EB0FDA /* pToggleButtonState.swift in Sources */,
 				A76130872CBBB90200EB0FDA /* cLeverView.swift in Sources */,
-				A708352A2CAD22F10066AEA4 /* NetworkManager.swift in Sources */,
+				A708352A2CAD22F10066AEA4 /* cNetworkManager.swift in Sources */,
 				A76130682CB50A4D00EB0FDA /* sNewPrompt.swift in Sources */,
 				A76130A02CBC160E00EB0FDA /* cLabelView.swift in Sources */,
 				A761308E2CBBDA5200EB0FDA /* cLeverPanelView.swift in Sources */,
@@ -719,7 +719,7 @@
 				A76130902CBBDB5800EB0FDA /* cLeverButton.swift in Sources */,
 				A70835102CA6C1DB0066AEA4 /* cSwitchGameViewModel.swift in Sources */,
 				A70834EF2CA6BE990066AEA4 /* UIView+Ext.swift in Sources */,
-				A70835122CA6C5710066AEA4 /* MultipeerTaskRepository.swift in Sources */,
+				A70835122CA6C5710066AEA4 /* cMultipeerTaskRepository.swift in Sources */,
 				A74A097F2CAE232D00456F30 /* NetworkError.swift in Sources */,
 				A76130922CBBE61E00EB0FDA /* eButtonState.swift in Sources */,
 				A761308C2CBBD52800EB0FDA /* cPromptStackView.swift in Sources */,
@@ -730,7 +730,7 @@
 				A76130982CBC02E000EB0FDA /* cSwitchIndicatorView.swift in Sources */,
 				A76130962CBC021400EB0FDA /* cSwitchStackView.swift in Sources */,
 				A761309E2CBC107100EB0FDA /* pButtonTappedDelegate.swift in Sources */,
-				A761306A2CB518F600EB0FDA /* JoinVerdictEvent.swift in Sources */,
+				A761306A2CB518F600EB0FDA /* sJoinVerdictEvent.swift in Sources */,
 				A70834F62CA6BFF80066AEA4 /* cSwitchGameViewController.swift in Sources */,
 				A76130812CB9038400EB0FDA /* cLeverIndicatorView.swift in Sources */,
 				A761309C2CBC06D900EB0FDA /* ViewFactory.swift in Sources */,

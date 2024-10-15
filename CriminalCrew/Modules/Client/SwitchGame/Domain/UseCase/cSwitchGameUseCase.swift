@@ -9,11 +9,14 @@ import Foundation
 import Combine
 
 protocol ValidateGameUseCaseProtocol {
+    
     func validateGameLogic(pressedButtons: [String]) -> AnyPublisher<Bool, Error>
     func validateGameLogic(pressedButtons: [[String]]) -> AnyPublisher<Bool, Error>
+    
 }
 
 internal class SwitchGameUseCase {
+    
     private var cancellables: Set<AnyCancellable> = []
     
     private let taskRepository: TaskRepository

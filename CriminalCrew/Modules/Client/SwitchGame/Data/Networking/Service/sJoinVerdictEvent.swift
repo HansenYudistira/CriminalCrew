@@ -22,6 +22,7 @@ public struct JoinVerdictEvent : GPEvent, GPSendableEvent, GPReceivableEvent {
         subjectName = forName
         isAdmitted = verdict
     }
+    
 }
 
 extension JoinVerdictEvent {

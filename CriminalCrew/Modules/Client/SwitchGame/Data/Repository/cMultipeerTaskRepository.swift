@@ -8,15 +8,18 @@ import Foundation
 import Combine
 
 protocol TaskRepository {
+    
     func sendTaskDataToPeer(taskDone: TaskDone) -> AnyPublisher<Bool, Never>
     func getTaskDataFromPeer(completion: @escaping (TaskDone) -> Void)
     func getPromptDataFromPeer(completion: @escaping (NewPrompt) -> Void)
     // func fetch()
     // func save()
     // func update()
+    
 }
 
 class MultipeerTaskRepository: TaskRepository {
+    
     func getPromptDataFromPeer(completion: @escaping (NewPrompt) -> Void) {
         print("mendapatkan prompt dari server")
     }

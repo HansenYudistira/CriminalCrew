@@ -9,6 +9,7 @@ import Foundation
 import GamePantry
 
 internal struct NewPrompt: GPEvent {
+    
     internal var id: String = "NewPrompt"
     
     internal var purpose: String = "Get a New Prompt"
@@ -20,11 +21,14 @@ internal struct NewPrompt: GPEvent {
     init(promptToBeDone: [String]) {
         self.promptToBeDone = promptToBeDone
     }
+    
 }
 
 extension NewPrompt: GPReceivableEvent {
+    
     internal static func construct(from payload: [String : Any]) -> NewPrompt? {
         guard let promptToBeDone = payload["promptToBeDone"] as? [String] else { return nil }
         return .init(promptToBeDone: promptToBeDone)
     }
+    
 }

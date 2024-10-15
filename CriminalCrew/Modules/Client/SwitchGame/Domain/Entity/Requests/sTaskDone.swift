@@ -9,15 +9,18 @@ import Foundation
 import GamePantry
 
 internal struct TaskDone {
+    
     internal let purpose: String = "SentTaskReport"
     internal var payload: [String : Any]
     
     init(payload: [String : Any]) {
         self.payload = payload
     }
+    
 }
 
 extension TaskDone: GPSendableEvent {
+    
     internal static func construct(from payload: [String : Any]) -> TaskDone? {
         guard
             let _ : Bool = payload["isCompleted"] as? Bool else { return nil }
@@ -53,4 +56,5 @@ extension TaskDone: GPSendableEvent {
         case id = "id"
         case instanciatedOn = "instanciatedOn"
     }
+    
 }
