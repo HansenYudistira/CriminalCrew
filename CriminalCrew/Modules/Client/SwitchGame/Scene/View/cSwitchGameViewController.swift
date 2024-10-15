@@ -105,9 +105,9 @@ internal class SwitchGameViewController: BaseGameViewController, GameContentProv
     }
     
     @objc private func toggleButton(_ sender: SwitchButton) {
-        if let label = sender.accessibilityLabel {
-            didPressedButton.send(label)
-        }
+        guard let label = sender.accessibilityLabel else { return }
+        didPressedButton.send(label)
+        
         sender.toggleButtonState()
     }
     

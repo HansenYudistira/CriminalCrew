@@ -5,9 +5,10 @@
 //  Created by Hansen Yudistira on 27/09/24.
 //
 import Foundation
+import Combine
 
 protocol TaskRepository {
-    func sendTaskDataToPeer(taskDone: TaskDone, completion: @escaping (Bool) -> Void)
+    func sendTaskDataToPeer(taskDone: TaskDone) -> AnyPublisher<Bool, Never>
     func getTaskDataFromPeer(completion: @escaping (TaskDone) -> Void)
     func getPromptDataFromPeer(completion: @escaping (NewPrompt) -> Void)
     // func fetch()
@@ -32,10 +33,18 @@ class MultipeerTaskRepository: TaskRepository {
     
     // func representedAsData untuk mengubah entity menjadi data yang bisa dikirim lewat multipeer
     // func broadcast dalam GPGameEventBroadcaster
-    func sendTaskDataToPeer(taskDone: TaskDone, completion: @escaping (Bool) -> Void) {
+    func sendTaskDataToPeer(taskDone: TaskDone) -> AnyPublisher<Bool, Never> {
+        
         print("data sent: \(taskDone)")
+        
         let data = taskDone.representedAsData()
-        NetworkManager.shared.sendDataToServer(data: data)
-        completion(true)
+        
+        return Future { promise in
+            NetworkManager.shared.sendDataToServer(data: data) { success in
+                promise(.success(success))
+            }
+        }
+        .eraseToAnyPublisher()
     }
+    
 }

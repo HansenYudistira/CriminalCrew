@@ -28,7 +28,6 @@ internal class SwitchGameViewModel {
     
     internal func bind() {
         input.didPressedButton
-            .receive(on: DispatchQueue.main)
             .sink { [weak self] accessibilityLabel in
                 self?.toggleButton(label: accessibilityLabel)
                 self?.validateTask()
@@ -53,22 +52,38 @@ internal class SwitchGameViewModel {
     }
     
     private func validateTask() {
-        let isValid = switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
-        if isValid {
-            completeTask()
-        } else {
-            wrongAnswer()
-        }
+        switchGameUseCase.validateGameLogic(pressedButtons: pressedButton)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("handle error: \(error)")
+                }
+            }, receiveValue: { [weak self] isSuccess in
+                if isSuccess {
+                    self?.completeTask()
+                }
+                self?.taskCompletionStatus.send(isSuccess)
+            })
+            .store(in: &cancellables)
     }
     
     private func completeTask() {
-        DispatchQueue.global(qos: .background).async {
-            self.switchGameUseCase.completeTask { [weak self] isSuccess in
-                DispatchQueue.main.async {
-                    self?.taskCompletionStatus.send(isSuccess)
+        switchGameUseCase.completeTask()
+            .receive(on: DispatchQueue.main)
+            .sink (receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure:
+                    self?.taskCompletionStatus.send(false)
                 }
-            }
-        }
+            }, receiveValue: { [weak self] isSuccess in
+                self?.taskCompletionStatus.send(isSuccess)
+            })
+            .store(in: &cancellables)
     }
     
     private func wrongAnswer() {
